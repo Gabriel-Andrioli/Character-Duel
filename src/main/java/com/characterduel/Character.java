@@ -14,31 +14,45 @@ public class Character {
         return distance <= this.attackRange;
     }
 
+    private void attackBattleLog(Character enemy, int argDamageDealt) {
+        if(argDamageDealt > 0)
+            System.out.print("You hit your enemy for " + argDamageDealt + " points of damage!");
+        else
+            System.out.print("Your enemy was too far and you missed...");
+        System.out.print(this.name + "'s HP: " + this.healthPoints
+                + "\t" + this.name + "'s DP: " + this.defensePoints);
+        System.out.print(enemy.name + "'s HP: " + enemy.healthPoints
+                + "\t" + enemy.name + "'s DP: " + enemy.defensePoints);
+    }
+
     protected void attack(Character enemy) {
 
-        /*
-        if(!isInRange(enemy)) {
-            Game.skipTurn();
-            return;
-            }
-            */
+        int damageDealt = this.attackPoints;
 
-        int damage = this.attackPoints;
-        if(enemy.defensePoints > damage) {
-            enemy.defensePoints -= damage;
+        if(!isInRange(enemy)) {
+            System.out.print("Your enemy was too far and you missed...");
+            attackBattleLog(enemy, damageDealt);
+            //Game.skipTurn();
+            }
+
+        else if(enemy.defensePoints > damageDealt) {
+            enemy.defensePoints -= damageDealt;
+            attackBattleLog(enemy, damageDealt);
             //Game.skipTurn();
         }
 
         else if (enemy.defensePoints > 0) {
-            damage -= enemy.defensePoints ;
+            damageDealt -= enemy.defensePoints ;
             enemy.defensePoints = 0;
-            enemy.healthPoints -= damage;
+            enemy.healthPoints -= damageDealt;
+            attackBattleLog(enemy, damageDealt);
             //Game.skipTurn();
         }
 
         else {
-            enemy.healthPoints -= damage;
+            enemy.healthPoints -= damageDealt;
+            attackBattleLog(enemy, damageDealt);
             //Game.skipTurn();
         }
-    };
+    }
 }
