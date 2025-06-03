@@ -42,7 +42,7 @@ public class Character {
         }
 
         else if (enemy.defensePoints > 0) {
-            damageDealt -= enemy.defensePoints ;
+            damageDealt -= enemy.defensePoints;
             enemy.defensePoints = 0;
             enemy.healthPoints -= damageDealt;
             attackBattleLog(enemy, damageDealt);
@@ -54,5 +54,9 @@ public class Character {
             attackBattleLog(enemy, damageDealt);
             //Game.skipTurn();
         }
+    }
+
+    protected void giveName(String name) {
+        this.name = name;
     }
 }
