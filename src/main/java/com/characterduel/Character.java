@@ -1,5 +1,7 @@
 package com.characterduel;
 
+import javax.swing.JOptionPane;
+
 public class Character {
     protected String name;
     protected int healthPoints;
@@ -16,12 +18,12 @@ public class Character {
 
     private void attackBattleLog(Character enemy, int argDamageDealt) {
         if(argDamageDealt > 0)
-            System.out.print("You hit your enemy for " + argDamageDealt + " points of damage!");
+            JOptionPane.showMessageDialog(null, "You hit your enemy for " + argDamageDealt + " points of damage!");
         else
-            System.out.print("Your enemy was too far and you missed...");
-        System.out.print(this.name + "'s HP: " + this.healthPoints
+            JOptionPane.showMessageDialog(null, "Your enemy was too far and you missed...");
+        JOptionPane.showMessageDialog(null, this.name + "'s HP: " + this.healthPoints
                 + "\t" + this.name + "'s DP: " + this.defensePoints);
-        System.out.print(enemy.name + "'s HP: " + enemy.healthPoints
+        JOptionPane.showMessageDialog(null, enemy.name + "'s HP: " + enemy.healthPoints
                 + "\t" + enemy.name + "'s DP: " + enemy.defensePoints);
     }
 
@@ -30,7 +32,7 @@ public class Character {
         int damageDealt = this.attackPoints;
 
         if(!isInRange(enemy)) {
-            System.out.print("Your enemy was too far and you missed...");
+            JOptionPane.showMessageDialog(null, "Your enemy was too far and you missed...");
             attackBattleLog(enemy, damageDealt);
             //Game.skipTurn();
             }
