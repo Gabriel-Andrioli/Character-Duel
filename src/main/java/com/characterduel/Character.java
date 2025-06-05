@@ -1,6 +1,7 @@
 package com.characterduel;
 
 import javax.swing.JOptionPane;
+import java.util.Random;
 
 public class Character {
     protected String name;
@@ -8,7 +9,34 @@ public class Character {
     protected int attackPoints;
     protected int defensePoints;
     protected int attackRange;
-    protected int [] position;
+
+    protected int standardDefensePoints;
+    protected int standardHealthPoints = 100;
+    protected int standardAttackPoints;
+    protected int standardAttackRange;
+
+    protected int [] position = new int [2];
+
+    public Character(int standardAttackPoints, int standardDefensePoints, int standardAttackRange, int team) {
+        healthPoints = standardHealthPoints;
+        attackPoints = standardAttackPoints;
+        defensePoints = standardDefensePoints;
+        attackRange = standardAttackRange;
+
+        setInitialPosition(team);
+    }
+
+    private void setInitialPosition(int team) {
+        Random rand = new Random();
+        if(team == 1) {
+            position[0] = rand.nextInt(10);
+            position[1] = rand.nextInt(4);
+        }
+        else {
+            position[0] = rand.nextInt(10);
+            position[1] = 10 - rand.nextInt(4);
+        }
+    }
 
     private boolean isInRange(Character enemy) {
         int distance = Math.max(Math.abs(enemy.position[0] - this.position[0]),
@@ -32,7 +60,6 @@ public class Character {
         int damageDealt = this.attackPoints;
 
         if(!isInRange(enemy)) {
-            JOptionPane.showMessageDialog(null, "Your enemy was too far and you missed...");
             attackBattleLog(enemy, damageDealt);
             //Game.skipTurn();
             }
@@ -56,6 +83,14 @@ public class Character {
             attackBattleLog(enemy, damageDealt);
             //Game.skipTurn();
         }
+    }
+
+    protected void defend() {
+        this.defensePoints = this.standardDefensePoints;
+    }
+
+    protected void move() {
+
     }
 
     protected void giveName(String name) {
