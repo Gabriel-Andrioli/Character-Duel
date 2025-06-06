@@ -22,20 +22,6 @@ public class Character {
         attackPoints = standardAttackPoints;
         defensePoints = standardDefensePoints;
         attackRange = standardAttackRange;
-
-        setInitialPosition(team);
-    }
-
-    private void setInitialPosition(int team) {
-        Random rand = new Random();
-        if(team == 1) {
-            position[0] = rand.nextInt(10);
-            position[1] = rand.nextInt(4);
-        }
-        else {
-            position[0] = rand.nextInt(10);
-            position[1] = 10 - rand.nextInt(4);
-        }
     }
 
     private boolean isInRange(Character enemy) {
