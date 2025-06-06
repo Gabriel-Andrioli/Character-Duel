@@ -1,7 +1,6 @@
 package com.characterduel;
 
 import javax.swing.JOptionPane;
-import java.util.Random;
 
 public class Character {
     protected String name;
@@ -24,12 +23,6 @@ public class Character {
         attackRange = standardAttackRange;
     }
 
-    private boolean isInRange(Character enemy) {
-        int distance = Math.max(Math.abs(enemy.position[0] - this.position[0]),
-                Math.abs(enemy.position[1] - this.position[1]));
-        return distance <= this.attackRange;
-    }
-
     private void attackBattleLog(Character enemy, int argDamageDealt) {
         if(argDamageDealt > 0)
             JOptionPane.showMessageDialog(null, "You hit your enemy for " + argDamageDealt + " points of damage!");
@@ -45,7 +38,7 @@ public class Character {
 
         int damageDealt = this.attackPoints;
 
-        if(!isInRange(enemy)) {
+        if(!Board.isInRange(this,enemy)) {
             attackBattleLog(enemy, damageDealt);
             //Game.skipTurn();
             }

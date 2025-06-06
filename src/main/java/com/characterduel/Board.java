@@ -18,4 +18,10 @@ public class Board {
     public Board() {
         setInitialPositions();
     }
+
+    protected static boolean isInRange(Character playerOne, Character playerTwo) {
+        int distance = Math.max(Math.abs(playerTwo.position[0] - playerOne.position[0]),
+                Math.abs(playerTwo.position[1] - playerOne.position[1]));
+        return distance <= playerOne.attackRange;
+    }
 }
