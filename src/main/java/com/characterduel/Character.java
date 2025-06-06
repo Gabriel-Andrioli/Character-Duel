@@ -89,6 +89,10 @@ public class Character {
         this.defensePoints = this.standardDefensePoints;
     }
 
+    protected boolean isAlive() {
+        return this.healthPoints > 0;
+    }
+
     protected void move() {
 
     }
