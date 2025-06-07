@@ -5,19 +5,22 @@ public class Game {
         Menu.showInitialMessage();
         
         String mode = Menu.chooseMode();
-        if ("Player x Player".equals(mode)){
-            String characterTypeP1 = Menu.chooseCharacter(1);
-            String nameP1 = Menu.nameCharacter(1);
-            String characterTypeP2 = Menu.chooseCharacter(2);
-            String nameP2 = Menu.nameCharacter(2);
-            Character PlayerOne = createCharacter(characterTypeP1);
-            Character PlayerTwo = createCharacter(characterTypeP2);
+        if (mode.equals("Sair do jogo"))
+            endGame();
+        else if ("Player x Player".equals(mode)){
+            Character PlayerOne = createCharacter(Menu.chooseCharacter(1));
+            PlayerOne.giveName(Menu.nameCharacter(1));
+            Character PlayerTwo = createCharacter(Menu.chooseCharacter(2));
+            PlayerTwo.giveName(Menu.nameCharacter(2));
             
             Board myBoard = new Board(PlayerOne, PlayerTwo);
             Board.show(PlayerOne, PlayerTwo);
             
             while (PlayerOne.isAlive() && PlayerTwo.isAlive()){
-                
+                executeAction(Menu.chooseAction(1), PlayerOne, PlayerTwo, 1);
+                Board.show(PlayerOne, PlayerTwo);
+                executeAction(Menu.chooseAction(2), PlayerTwo, PlayerOne, 2);
+                Board.show(PlayerOne, PlayerTwo);
             }
         }
     }
@@ -35,7 +38,11 @@ public class Game {
     
     private static void executeAction (String action, Character player, Character enemy, int n){
         switch (action) {
-            case "Mover" -> player.move(player, Menu.whereToMove(n));
+            case "Mover" -> {int direction = Menu.whereToMove(n);
+                if (direction==5)
+                    endGame();
+                player.move(player, direction);
+            }
             case "Atacar" -> player.attack(enemy);
             case "Defender" -> player.defend();
             case "Poder especial" -> player.ultimate(enemy);
@@ -44,6 +51,6 @@ public class Game {
     }
     
     private static void endGame (){
-        
+        System.exit(0);
     }
 }

@@ -51,8 +51,8 @@ public class Board {
         return true;
     }
 
-    protected static void movementLog(Character player, boolean sucess, String stringDirection) {
-        if(!sucess) {
+    protected static void movementLog(Character player, boolean success, String stringDirection) {
+        if(!success) {
             JOptionPane.showMessageDialog(null, "Movimento inválido!");
         }
         else
