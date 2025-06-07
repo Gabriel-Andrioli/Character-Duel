@@ -3,7 +3,7 @@ package com.characterduel;
 public class Mage extends Character {
 
     public Mage(int standardAttackPoints,int standardDefensePoints,int standardAttackRange, int team) {
-        super(10,7,3,team);
+        super(10,7,3);
     }
 
     protected void ultimate(Character enemy) {

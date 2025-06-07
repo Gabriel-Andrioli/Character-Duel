@@ -3,7 +3,7 @@ package com.characterduel;
 public class Warrior extends Character {
 
     public Warrior(int standardAttackPoints,int standardDefensePoints,int standardAttackRange, int team) {
-        super(15,10,1,team);
+        super(15,10,1);
     }
 
     protected void ultimate(Character enemy) {

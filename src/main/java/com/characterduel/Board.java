@@ -1,9 +1,10 @@
 package com.characterduel;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class Board {
-    private int [][] board = new int[10][10];
+    protected int [][] board = new int[10][10];
 
     private void setInitialPositions(Character playerOne, Character playerTwo) {
         Random rand = new Random();
@@ -41,6 +42,7 @@ public class Board {
     }
 
     protected static void movementLog(boolean sucess) {
-        
+        if(sucess)
+            JOptionPane.showMessageDialog(null, "oved " + argDamageDealt + " points of damage!");
     }
 }

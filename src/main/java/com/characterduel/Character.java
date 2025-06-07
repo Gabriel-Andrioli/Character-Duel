@@ -16,7 +16,7 @@ public class Character {
 
     protected int [] position = new int [2];
 
-    public Character(int standardAttackPoints, int standardDefensePoints, int standardAttackRange, int team) {
+    public Character(int standardAttackPoints, int standardDefensePoints, int standardAttackRange) {
         healthPoints = standardHealthPoints;
         attackPoints = standardAttackPoints;
         defensePoints = standardDefensePoints;
@@ -25,9 +25,9 @@ public class Character {
 
     private void attackBattleLog(Character enemy, int argDamageDealt) {
         if(argDamageDealt > 0)
-            JOptionPane.showMessageDialog(null, "You hit your enemy for " + argDamageDealt + " points of damage!");
+            JOptionPane.showMessageDialog(null, this.name + "Atingiu seu inimigo e causou " + argDamageDealt + " pontos de dano!");
         else
-            JOptionPane.showMessageDialog(null, "Your enemy was too far and you missed...");
+            JOptionPane.showMessageDialog(null, "O inimigo estava muito longe e não foi atingido...");
         JOptionPane.showMessageDialog(null, this.name + "'s HP: " + this.healthPoints
                 + "\t" + this.name + "'s DP: " + this.defensePoints);
         JOptionPane.showMessageDialog(null, enemy.name + "'s HP: " + enemy.healthPoints
