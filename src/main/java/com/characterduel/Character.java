@@ -25,7 +25,7 @@ public class Character {
 
     private void attackBattleLog(Character enemy, int argDamageDealt) {
         if(argDamageDealt > 0)
-            JOptionPane.showMessageDialog(null, this.name + "Atingiu seu inimigo e causou " + argDamageDealt + " pontos de dano!");
+            JOptionPane.showMessageDialog(null, this.name + " atingiu seu inimigo e causou " + argDamageDealt + " pontos de dano!");
         else
             JOptionPane.showMessageDialog(null, "O inimigo estava muito longe e não foi atingido...");
         JOptionPane.showMessageDialog(null, this.name + "'s HP: " + this.healthPoints
@@ -39,11 +39,11 @@ public class Character {
         int damageDealt = this.attackPoints;
 
         if(!Board.isInRange(this,enemy)) {
-            attackBattleLog(enemy, damageDealt);
+            attackBattleLog(enemy, 0);
             //Game.skipTurn();
             }
 
-        else if(enemy.defensePoints > damageDealt) {
+        else if(enemy.defensePoints >= damageDealt) {
             enemy.defensePoints -= damageDealt;
             attackBattleLog(enemy, damageDealt);
             //Game.skipTurn();
