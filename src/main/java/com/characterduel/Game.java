@@ -1,7 +1,8 @@
 package com.characterduel;
 
 public class Game {
-    public Board myBoard = null;
+    
+    public static Board myBoard = new Board();
     
     public static void play() {
         Menu.showInitialMessage();
@@ -14,15 +15,17 @@ public class Game {
             PlayerOne.giveName(Menu.nameCharacter(1));
             Character PlayerTwo = createCharacter(Menu.chooseCharacter(2));
             PlayerTwo.giveName(Menu.nameCharacter(2));
-            myBoard
             
-            myBoard = new Board(PlayerOne, PlayerTwo);
+            
+            myBoard.createBoard(PlayerOne, PlayerTwo);
             myBoard.show(PlayerOne, PlayerTwo);
             
             while (PlayerOne.isAlive() && PlayerTwo.isAlive()){
-                executeAction(Menu.chooseAction(1), PlayerOne, PlayerTwo, 1);
+                String action = Menu.chooseAction(1);
+                executeAction(action, PlayerOne, PlayerTwo, 1);
                 myBoard.show(PlayerOne, PlayerTwo);
-                executeAction(Menu.chooseAction(2), PlayerTwo, PlayerOne, 2);
+                action = Menu.chooseAction(2);
+                executeAction(action, PlayerTwo, PlayerOne, 2);
                 myBoard.show(PlayerOne, PlayerTwo);
             }
         }

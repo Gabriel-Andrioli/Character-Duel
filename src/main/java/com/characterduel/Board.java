@@ -16,9 +16,9 @@ public class Board {
 
         board[playerOne.position[0]][playerOne.position[1]] = 1;
         board[playerTwo.position[0]][playerTwo.position[1]] = 2;
-    }
-
-    public Board(Character playerOne, Character playerTwo) {
+    } 
+    
+    public void createBoard(Character playerOne, Character playerTwo) {
         setInitialPositions(playerOne, playerTwo);
         JOptionPane.showMessageDialog(null, "O tabuleiro será exposto no console!");
     }
@@ -64,16 +64,18 @@ public class Board {
     }
 
     protected void show(Character playerOne, Character playerTwo) {
-        for(int i = 0; i < board.length; i++) {
-            for(int j = 0; j < board[i].length; j++) {
+        for(int i = 0; i < 10; i++) {
+            for(int j = 0; j < 10; j++) {
                 if(!hasAPlayer(playerOne, i, j) && !hasAPlayer(playerTwo, i, j))
-                    System.out.println(" ( ) ");
+                    System.out.print(" ( ) ");
                 if(hasAPlayer(playerOne, i, j))
-                    System.out.println(" (1) ");
+                    System.out.print(" (1) ");
                 else
-                    System.out.println(" (2) ");
+                    System.out.print(" (2) ");
             }
-            System.out.println("\n");
+            System.out.println();
         }
+        System.out.println();
+        System.out.println();
     }
 }

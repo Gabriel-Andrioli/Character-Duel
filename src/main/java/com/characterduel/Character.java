@@ -38,7 +38,7 @@ public class Character {
 
         int damageDealt = this.attackPoints;
 
-        if(!Board.isInRange(this,enemy)) {
+        if(!Game.myBoard.isInRange(this,enemy)) {
             attackBattleLog(enemy, 0);
             //Game.skipTurn();
             }
@@ -74,8 +74,8 @@ public class Character {
 
     protected void move(Character enemy, int direction) {
         // N -> 1, E-> 2, S-> 3, W-> 4
-        if(!Board.moveIsValid(this, enemy, direction)) {
-            Board.movementLog(this,false, "placeholder");
+        if(!Game.myBoard.moveIsValid(this, enemy, direction)) {
+            Game.myBoard.movementLog(this,false, "placeholder");
             return;
         }
 
@@ -100,7 +100,7 @@ public class Character {
             default -> "placeholder";
         };
 
-        Board.movementLog(this,true, strDirection);
+        Game.myBoard.movementLog(this,true, strDirection);
     }
 
     protected void giveName(String name) {
