@@ -39,16 +39,7 @@ public class Menu {
     }
     
     public static int whereToMove (int n){
-        return 1 + JOptionPane.showOptionDialog(null, "(Player "+n+")\nEscolha para onde irá se mover:", 
+        return JOptionPane.showOptionDialog(null, "(Player "+n+")\nEscolha para onde irá se mover:", 
                 "Character Duel", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, directions, "Direita");
     }
-    /*   PARA TESTES, USAR NA MAIN:
-    Menu menu = new Menu();
-    menu.showInitialMessage();
-    menu.chooseMode();
-    menu.chooseCharacter(1);
-    menu.nameCharacter(1);
-    menu.chooseAction(1);
-    menu.whereToMove(1);
-*/
 }
