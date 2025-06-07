@@ -4,24 +4,39 @@ import java.util.Random;
 
 public class Board {
     private int [][] board = new int[10][10];
-    private int [] playerOnePosition = new int [2];
-    private int [] playerTwoPosition = new int [2];
 
-    private void setInitialPositions() {
+    private void setInitialPositions(Character playerOne, Character playerTwo) {
         Random rand = new Random();
-        playerOnePosition[0] = rand.nextInt(10);
-        playerTwoPosition[1] = rand.nextInt(4);
-        playerOnePosition[0] = rand.nextInt(10);
-        playerTwoPosition[1] = 10 - rand.nextInt(4);
+
+        playerOne.position[0] = rand.nextInt(10);
+        playerOne.position[1] = rand.nextInt(4);
+        playerTwo.position[0] = rand.nextInt(10);
+        playerTwo.position[1] = 10 - rand.nextInt(4);
+
+        board[playerOne.position[0]][playerOne.position[1]] = 1;
+        board[playerTwo.position[0]][playerTwo.position[1]] = 2;
     }
 
-    public Board() {
-        setInitialPositions();
+    public Board(Character playerOne, Character playerTwo) {
+        setInitialPositions(playerOne, playerTwo);
     }
 
     protected static boolean isInRange(Character playerOne, Character playerTwo) {
         int distance = Math.max(Math.abs(playerTwo.position[0] - playerOne.position[0]),
                 Math.abs(playerTwo.position[1] - playerOne.position[1]));
         return distance <= playerOne.attackRange;
+    }
+
+    protected static boolean moveIsValid(int x, int y, int direction) {
+        // N -> 1, E-> 2, S-> 3, W-> 4
+        if(direction == 1 && y == 9)
+            return false;
+        if(direction == 2 && x == 9)
+            return false;
+        if(direction == 3 && y == 0)
+            return false;
+        if(direction == 4 && x == 0)
+            return false;
+        return true;
     }
 }
