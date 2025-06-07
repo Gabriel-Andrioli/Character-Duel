@@ -17,10 +17,10 @@ public class Character {
     protected int [] position = new int [2];
 
     public Character(int standardAttackPoints, int standardDefensePoints, int standardAttackRange) {
-        healthPoints = standardHealthPoints;
-        attackPoints = standardAttackPoints;
-        defensePoints = standardDefensePoints;
-        attackRange = standardAttackRange;
+        this.standardHealthPoints = healthPoints = standardHealthPoints;
+        this.standardAttackPoints = attackPoints = standardAttackPoints;
+        this.standardDefensePoints = defensePoints = standardDefensePoints;
+        this.standardAttackRange = attackRange = standardAttackRange;
     }
 
     private void attackBattleLog(Character enemy, int argDamageDealt) {
