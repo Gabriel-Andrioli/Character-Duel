@@ -1,18 +1,3 @@
-<<<<<<< Updated upstream
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.characterduel;
-
-/**
- *
- * @author Frederico Amaral
- */
-public class Menu {
-    
-}
-=======
 package com.characterduel;
 
 import javax.swing.JOptionPane;
@@ -72,5 +57,3 @@ public class Menu {
     menu.whereToMove(1);
 */
 }
-    
->>>>>>> Stashed changes
