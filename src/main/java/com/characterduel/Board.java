@@ -68,7 +68,7 @@ public class Board {
             for(int j = 0; j < 10; j++) {
                 if(!hasAPlayer(playerOne, i, j) && !hasAPlayer(playerTwo, i, j))
                     System.out.print(" ( ) ");
-                if(hasAPlayer(playerOne, i, j))
+                else if(hasAPlayer(playerOne, i, j))
                     System.out.print(" (1) ");
                 else
                     System.out.print(" (2) ");
