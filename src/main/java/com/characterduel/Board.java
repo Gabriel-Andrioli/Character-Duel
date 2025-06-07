@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.Random;
 
 public class Board {
-    protected int [][] board = new int[10][10];
+    protected static int [][] board = new int[10][10];
 
     private void setInitialPositions(Character playerOne, Character playerTwo) {
         Random rand = new Random();
@@ -45,7 +45,24 @@ public class Board {
         if(!sucess) {
             JOptionPane.showMessageDialog(null, "Movimento inválido!");
         }
-        if(sucess)
+        else
             JOptionPane.showMessageDialog(null, player.name + " moveu " + stringDirection + "!");
+    }
+
+    private static boolean hasAPlayer(Character player, int x, int y) {
+        return player.position[0] == x && player.position[1] == y;
+    }
+
+    protected static void show(Character playerOne, Character playerTwo) {
+        for(int i = 0; i < board.length; i++) {
+            for(int j = 0; j < board[i].length; j++) {
+                if(!hasAPlayer(playerOne, i, j) && !hasAPlayer(playerTwo, i, j))
+                    System.out.println(" ( ) ");
+                if(hasAPlayer(playerOne, i, j))
+                    System.out.println(" (1) ");
+                else
+                    System.out.println(" (2) ");
+            }
+        }
     }
 }
