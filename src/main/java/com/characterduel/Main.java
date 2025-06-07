@@ -3,6 +3,6 @@ package com.characterduel;
 public class Main {
     
     public static void main(String[] args) {
-        
+
     }
 }
