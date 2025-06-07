@@ -72,9 +72,9 @@ public class Character {
         return this.healthPoints > 0;
     }
 
-    protected void move(int direction) {
+    protected void move(Character enemy, int direction) {
         // N -> 1, E-> 2, S-> 3, W-> 4
-        if(!Board.moveIsValid(this.position,direction)) {
+        if(!Board.moveIsValid(this, enemy, direction)) {
             Board.movementLog(this,false, "placeholder");
             return;
         }
