@@ -27,16 +27,20 @@ public class Board {
         return distance <= playerOne.attackRange;
     }
 
-    protected static boolean moveIsValid(int x, int y, int direction) {
+    protected static boolean moveIsValid(int [] position, int direction) {
         // N -> 1, E-> 2, S-> 3, W-> 4
-        if(direction == 1 && y == 9)
+        if(direction == 1 && position[1] == 9)
             return false;
-        if(direction == 2 && x == 9)
+        if(direction == 2 && position[0] == 9)
             return false;
-        if(direction == 3 && y == 0)
+        if(direction == 3 && position[1] == 0)
             return false;
-        if(direction == 4 && x == 0)
+        if(direction == 4 && position[0] == 0)
             return false;
         return true;
+    }
+
+    protected static void movementLog(boolean sucess) {
+        
     }
 }
