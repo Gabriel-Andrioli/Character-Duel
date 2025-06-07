@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.Random;
 
 public class Board {
-    protected static int [][] board = new int[10][10];
+    protected int [][] board = new int[10][10];
 
     private void setInitialPositions(Character playerOne, Character playerTwo) {
         Random rand = new Random();
@@ -23,13 +23,13 @@ public class Board {
         JOptionPane.showMessageDialog(null, "O tabuleiro será exposto no console!");
     }
 
-    protected static boolean isInRange(Character playerOne, Character playerTwo) {
+    protected boolean isInRange(Character playerOne, Character playerTwo) {
         int distance = Math.max(Math.abs(playerTwo.position[0] - playerOne.position[0]),
                 Math.abs(playerTwo.position[1] - playerOne.position[1]));
         return distance <= playerOne.attackRange;
     }
 
-    protected static boolean moveIsValid(Character playerOne, Character playerTwo, int direction) {
+    protected boolean moveIsValid(Character playerOne, Character playerTwo, int direction) {
         // N -> 1, E-> 2, S-> 3, W-> 4
         if(direction == 1 && playerOne.position[1] == 9)
             return false;
@@ -51,7 +51,7 @@ public class Board {
         return true;
     }
 
-    protected static void movementLog(Character player, boolean success, String stringDirection) {
+    protected void movementLog(Character player, boolean success, String stringDirection) {
         if(!success) {
             JOptionPane.showMessageDialog(null, "Movimento inválido!");
         }
@@ -59,11 +59,11 @@ public class Board {
             JOptionPane.showMessageDialog(null, player.name + " moveu " + stringDirection + "!");
     }
 
-    private static boolean hasAPlayer(Character player, int x, int y) {
+    private boolean hasAPlayer(Character player, int x, int y) {
         return player.position[0] == x && player.position[1] == y;
     }
 
-    protected static void show(Character playerOne, Character playerTwo) {
+    protected void show(Character playerOne, Character playerTwo) {
         for(int i = 0; i < board.length; i++) {
             for(int j = 0; j < board[i].length; j++) {
                 if(!hasAPlayer(playerOne, i, j) && !hasAPlayer(playerTwo, i, j))
