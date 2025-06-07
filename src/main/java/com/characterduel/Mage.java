@@ -2,10 +2,11 @@ package com.characterduel;
 
 public class Mage extends Character {
 
-    public Mage(int standardAttackPoints,int standardDefensePoints,int standardAttackRange, int team) {
+    public Mage() {
         super(10,7,3);
     }
 
+    @Override
     protected void ultimate(Character enemy) {
         int aux = this.healthPoints;
         this.healthPoints = enemy.healthPoints;

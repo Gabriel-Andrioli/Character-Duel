@@ -106,4 +106,8 @@ public class Character {
     protected void giveName(String name) {
         this.name = name;
     }
+    
+    protected void ultimate(Character enemy) {
+        
+    }
 }

@@ -7,7 +7,7 @@ public class Menu {
     private static final String[] gameModes = {"Player x Player", "Contra o computador", "Sair do jogo"};
     private static final String[] characters = {"Arqueiro", "Mago", "Guerreiro", "Sair do jogo"};
     private static final String[] actions = {"Mover", "Atacar", "Defender", "Poder Especial", "Sair do jogo"};
-    private static final String[] directions = {"Cima", "Esquerda", "Direita", "Baixo", "Sair do jogo"};
+    private static final String[] directions = {"Cima", "Direita", "Baixo", "Esquerda", "Sair do jogo"};
     
     public static void showInitialMessage(){
         JOptionPane.showMessageDialog(null, "Bem-vindo ao Duelo de Personagens!\n\nDescrição:\n - O jogo consiste em um "
@@ -38,9 +38,9 @@ public class Menu {
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, actions, "Mover")];
     }
     
-    public static String whereToMove (int n){
-        return directions[JOptionPane.showOptionDialog(null, "(Player "+n+")\nEscolha para onde irá se mover:", 
-                "Character Duel", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, directions, "Direita")];
+    public static int whereToMove (int n){
+        return 1 + JOptionPane.showOptionDialog(null, "(Player "+n+")\nEscolha para onde irá se mover:", 
+                "Character Duel", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, directions, "Direita");
     }
     /*   PARA TESTES, USAR NA MAIN:
     Menu menu = new Menu();

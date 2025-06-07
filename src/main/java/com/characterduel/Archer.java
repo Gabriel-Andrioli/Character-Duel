@@ -2,11 +2,12 @@ package com.characterduel;
 
 public class Archer extends Character {
 
-    public Archer(int standardAttackPoints,int standardDefensePoints,int standardAttackRange, int team) {
+    public Archer() {
         super(8,5,5);
     }
 
-    protected void ultimate() {
+    @Override
+    protected void ultimate(Character enemy) {
         this.attackRange += standardAttackRange / 5;
     }
 }

@@ -20,6 +20,7 @@ public class Board {
 
     public Board(Character playerOne, Character playerTwo) {
         setInitialPositions(playerOne, playerTwo);
+        JOptionPane.showMessageDialog(null, "O tabuleiro será exposto no console!");
     }
 
     protected static boolean isInRange(Character playerOne, Character playerTwo) {
