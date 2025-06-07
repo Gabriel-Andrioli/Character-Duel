@@ -41,8 +41,11 @@ public class Board {
         return true;
     }
 
-    protected static void movementLog(boolean sucess) {
+    protected static void movementLog(Character player, boolean sucess, String stringDirection) {
+        if(!sucess) {
+            JOptionPane.showMessageDialog(null, "Movimento inválido!");
+        }
         if(sucess)
-            JOptionPane.showMessageDialog(null, "oved " + argDamageDealt + " points of damage!");
+            JOptionPane.showMessageDialog(null, player.name + " moveu " + stringDirection + "!");
     }
 }

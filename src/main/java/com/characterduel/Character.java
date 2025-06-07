@@ -75,16 +75,32 @@ public class Character {
     protected void move(int direction) {
         // N -> 1, E-> 2, S-> 3, W-> 4
         if(!Board.moveIsValid(this.position,direction)) {
-            Board.movementLog(false);
+            Board.movementLog(this,false, "placeholder");
             return;
         }
-        switch (direction) {
-            case 1: this.position[1]++; break;
-            case 2: this.position[0]++; break;
-            case 3: this.position[1]--; break;
-            case 4: this.position[0]--; break;
-        }
-        Board.movementLog(true);
+
+        // Passar isso para Board seria bom provavelmente
+        String strDirection = switch (direction) {
+            case 1 -> {
+                this.position[1]++;
+                yield "norte";
+            }
+            case 2 -> {
+                this.position[0]++;
+                yield "leste";
+            }
+            case 3 -> {
+                this.position[1]--;
+                yield "sul";
+            }
+            case 4 -> {
+                this.position[0]--;
+                yield "oeste";
+            }
+            default -> "placeholder";
+        };
+
+        Board.movementLog(this,true, strDirection);
     }
 
     protected void giveName(String name) {
