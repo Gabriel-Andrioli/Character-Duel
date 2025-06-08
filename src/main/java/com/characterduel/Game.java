@@ -44,14 +44,15 @@ public class Game {
     
     private static void executeAction (String action, Character player, Character enemy, int n){
         switch (action) {
-            case "Mover" -> {int direction = Menu.whereToMove(n);
+            case "Mover" -> {
+                int direction = Menu.whereToMove(n);
                 if (direction==5)
                     endGame();
                 player.move(enemy, direction);
             }
             case "Atacar" -> player.attack(enemy);
             case "Defender" -> player.defend();
-            case "Poder especial" -> player.ultimate(enemy);
+            case "Poder Especial" -> player.ultimate(enemy);
             case "Sair do jogo" -> endGame();
         }
     }
