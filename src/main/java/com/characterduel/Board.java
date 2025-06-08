@@ -30,33 +30,32 @@ public class Board {
     }
 
     protected boolean moveIsValid(Character playerOne, Character playerTwo, int direction) {
-        // N -> 1, E-> 2, S-> 3, W-> 4
+        // N -> 0, E-> 1, S-> 2, W-> 3
+        if(direction == 0 && playerOne.position[0] == 0)
+            return false;
         if(direction == 1 && playerOne.position[1] == 9)
             return false;
         if(direction == 2 && playerOne.position[0] == 9)
             return false;
         if(direction == 3 && playerOne.position[1] == 0)
             return false;
-        if(direction == 4 && playerOne.position[0] == 0)
-            return false;
 
+        if(direction == 0 && playerTwo.position[1] == playerOne.position[1] && playerTwo.position[0] == playerOne.position[0] - 1)
+            return false;
         if(direction == 1 && playerTwo.position[0] == playerOne.position[0] && playerTwo.position[1] == playerOne.position[1] + 1)
             return false;
         if(direction == 2 && playerTwo.position[1] == playerOne.position[1] && playerTwo.position[0] == playerOne.position[0] + 1)
             return false;
         if(direction == 3 && playerTwo.position[0] == playerOne.position[0] && playerTwo.position[1] == playerOne.position[1] - 1)
             return false;
-        if(direction == 4 && playerTwo.position[1] == playerOne.position[1] && playerTwo.position[0] == playerOne.position[0] - 1)
-            return false;
         return true;
     }
 
     protected void movementLog(Character player, boolean success, String stringDirection) {
-        if(!success) {
-            JOptionPane.showMessageDialog(null, "Movimento inválido!");
-        }
-        else
+        if(success) 
             JOptionPane.showMessageDialog(null, player.name + " moveu " + stringDirection + "!");
+        else
+            JOptionPane.showMessageDialog(null, "Movimento inválido!");
     }
 
     private boolean hasAPlayer(Character player, int x, int y) {

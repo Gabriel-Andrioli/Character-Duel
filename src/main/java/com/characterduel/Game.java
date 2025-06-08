@@ -47,7 +47,7 @@ public class Game {
             case "Mover" -> {int direction = Menu.whereToMove(n);
                 if (direction==5)
                     endGame();
-                player.move(player, direction);
+                player.move(enemy, direction);
             }
             case "Atacar" -> player.attack(enemy);
             case "Defender" -> player.defend();
