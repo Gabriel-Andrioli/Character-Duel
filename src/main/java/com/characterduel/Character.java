@@ -98,8 +98,9 @@ public class Character {
                 default -> "placeholder";
             };
 
-            Game.myBoard.movementLog(this,true, strDirection);
+            Game.myBoard.movementLog(this,true,strDirection);
         }
+
     }
 
     protected void giveName(String name) {
