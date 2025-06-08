@@ -8,6 +8,6 @@ public class Warrior extends Character {
 
     @Override
     protected void ultimate(Character enemy) {
-        this.attackPoints = this.standardAttackPoints * 2;
+        this.attackPoints = this.standardAttackPoints*2;
     }
 }
