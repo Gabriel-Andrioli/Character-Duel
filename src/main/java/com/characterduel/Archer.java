@@ -1,5 +1,7 @@
 package com.characterduel;
 
+import javax.swing.*;
+
 public class Archer extends Character {
 
     public Archer() {
@@ -8,6 +10,15 @@ public class Archer extends Character {
 
     @Override
     protected void ultimate(Character enemy) {
+        ultimateLog(enemy);
         this.attackRange += standardAttackRange / 5;
+    }
+
+    @Override
+    protected void ultimateLog(Character enemy) {
+        JOptionPane.showMessageDialog(null, this.name + " aumentou seu alcance de ataque!\n");
+        JOptionPane.showMessageDialog(null,
+                this.name + "\n"
+                        + "Alcance de ataque: " + this.attackRange + "\n");
     }
 }

@@ -10,10 +10,10 @@ public class Mage extends Character {
 
     @Override
     protected void ultimate(Character enemy) {
+        ultimateLog(enemy);
         int aux = this.healthPoints;
         this.healthPoints = enemy.healthPoints;
         enemy.healthPoints = aux;
-        ultimateLog(enemy);
     }
 
     @Override

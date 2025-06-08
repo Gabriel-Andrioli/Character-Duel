@@ -28,10 +28,14 @@ public class Character {
             JOptionPane.showMessageDialog(null, this.name + " atingiu seu inimigo e causou " + argDamageDealt + " pontos de dano!");
         else
             JOptionPane.showMessageDialog(null, "O inimigo estava muito longe e não foi atingido...");
-        JOptionPane.showMessageDialog(null, this.name + "'s HP: " + this.healthPoints
-                + "    " + this.name + "'s DP: " + this.defensePoints);
-        JOptionPane.showMessageDialog(null, enemy.name + "'s HP: " + enemy.healthPoints
-                + "    " + enemy.name + "'s DP: " + enemy.defensePoints);
+        JOptionPane.showMessageDialog(null,
+                this.name + "\n"
+                        + "PV: " + this.healthPoints + "\n"
+                        + "PE: " + this.defensePoints + "\n");
+        JOptionPane.showMessageDialog(null,
+                enemy.name + "\n"
+                        + "PV: " + enemy.healthPoints + "\n"
+                        + "PE: " + enemy.defensePoints + "\n");
     }
 
     private void movementLog(Character player, boolean success, String stringDirection) {
@@ -55,13 +59,11 @@ public class Character {
 
         if(!Game.myBoard.isInRange(this,enemy)) {
             attackLog(enemy, 0);
-            //Game.skipTurn();
             }
 
         else if(enemy.defensePoints >= damageDealt) {
             enemy.defensePoints -= damageDealt;
             attackLog(enemy, damageDealt);
-            //Game.skipTurn();
         }
 
         else if (enemy.defensePoints > 0) {
@@ -69,13 +71,11 @@ public class Character {
             enemy.defensePoints = 0;
             enemy.healthPoints -= damageDealt;
             attackLog(enemy, damageDealt);
-            //Game.skipTurn();
         }
 
         else {
             enemy.healthPoints -= damageDealt;
             attackLog(enemy, damageDealt);
-            //Game.skipTurn();
         }
     }
 

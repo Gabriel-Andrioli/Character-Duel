@@ -21,10 +21,10 @@ public class Game {
             myBoard.show(PlayerOne, PlayerTwo);
             
             while (PlayerOne.isAlive() && PlayerTwo.isAlive()){
-                String action = Menu.chooseAction(1);
+                String action = Menu.chooseAction(PlayerOne.name,1);
                 executeAction(action, PlayerOne, PlayerTwo, 1);
                 myBoard.show(PlayerOne, PlayerTwo);
-                action = Menu.chooseAction(2);
+                action = Menu.chooseAction(PlayerTwo.name,2);
                 executeAction(action, PlayerTwo, PlayerOne, 2);
                 myBoard.show(PlayerOne, PlayerTwo);
             }

@@ -22,7 +22,7 @@ public class Menu {
     }
     
     public static String chooseCharacter(int n){
-        return characters[JOptionPane.showOptionDialog(null, "(Player "+n+")\nSelecione um personagem:\n1. Arqueiro:\nForça: "
+        return characters[JOptionPane.showOptionDialog(null, "(Jogador "+n+")\nSelecione um personagem:\n1. Arqueiro:\nForça: "
                 + "+\nDefesa: +\nAlcance de Ataque: +++\nPoder Especial: Aumenta seu alcance\n\n2. Mago:\nForça: ++\nDefesa: "
                 + "++\nAlcance de Ataque: ++\nPoder Especial: Troca de vida com o oponente\n\n3. Guerreiro:\nForça: +++"
                 + "\nDefesa: +++\nAlcance de Ataque: +\nPoder Especial: Dobra sua força", "Character Duel", 
@@ -30,16 +30,16 @@ public class Menu {
     }
     
     public static String nameCharacter(int n){
-        return JOptionPane.showInputDialog("(Player "+n+")\nDigite o nome do seu personagem:");
+        return JOptionPane.showInputDialog("(Jogador "+n+")\nDigite o nome do seu personagem:");
     }
     
-    public static String chooseAction(int n){
-        return actions[JOptionPane.showOptionDialog(null, "(Player "+n+")\nEscolha sua próxima ação:", "Character Duel", 
+    public static String chooseAction(String name, int n){
+        return actions[JOptionPane.showOptionDialog(null, name + "\nEscolha sua próxima ação:", "Character Duel",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, actions, "Mover")];
     }
     
-    public static int whereToMove (int n){
-        return JOptionPane.showOptionDialog(null, "(Player "+n+")\nEscolha para onde irá se mover:", 
+    public static int whereToMove (String name, int n){
+        return JOptionPane.showOptionDialog(null, name + "\nEscolha para onde irá se mover:",
                 "Character Duel", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, directions, "Direita");
     }
 }
