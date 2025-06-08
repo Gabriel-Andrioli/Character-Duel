@@ -24,6 +24,8 @@ public class Game {
                 String action = Menu.chooseAction(PlayerOne.name,1);
                 executeAction(action, PlayerOne, PlayerTwo, 1);
                 myBoard.show(PlayerOne, PlayerTwo);
+                if(!PlayerTwo.isAlive())
+                    break;
                 action = Menu.chooseAction(PlayerTwo.name,2);
                 executeAction(action, PlayerTwo, PlayerOne, 2);
                 myBoard.show(PlayerOne, PlayerTwo);
