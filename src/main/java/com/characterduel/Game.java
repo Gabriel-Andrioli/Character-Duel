@@ -45,7 +45,7 @@ public class Game {
     private static void executeAction (String action, Character player, Character enemy, int n){
         switch (action) {
             case "Mover" -> {
-                int direction = Menu.whereToMove(n);
+                int direction = Menu.whereToMove(player.name,n);
                 if (direction==5)
                     endGame();
                 player.move(enemy, direction);
