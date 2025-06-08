@@ -40,7 +40,7 @@ public class Character {
 
     private void movementLog(Character player, boolean success, String stringDirection) {
         if(success)
-            JOptionPane.showMessageDialog(null, player.name + " moveu " + stringDirection + "!");
+            JOptionPane.showMessageDialog(null, player.name + " moveu para " + stringDirection + "!");
         else
             JOptionPane.showMessageDialog(null, "Movimento inválido!");
     }
