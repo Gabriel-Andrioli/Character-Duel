@@ -48,4 +48,8 @@ public class Menu {
         return playAgain[JOptionPane.showOptionDialog(null, "Deseja continuar jogando?", "Character Duel", 
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, playAgain, "Continuar jogando")];
     }
+    
+    public static void winner(String name){
+        JOptionPane.showMessageDialog(null, "Após um forte embate, " + name + " saiu vencedor!");
+    }
 }

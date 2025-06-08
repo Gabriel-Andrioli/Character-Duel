@@ -30,6 +30,11 @@ public class Game {
                     executeAction(action, PlayerTwo, PlayerOne, 2);
                     myBoard.show(PlayerOne, PlayerTwo);
                 }
+                
+                if (!PlayerTwo.isAlive())
+                    Menu.winner(PlayerOne.name);
+                else
+                    Menu.winner(PlayerTwo.name);
             }
             /*else{
                 Character PlayerOne = createCharacter(Menu.chooseCharacter(1));
