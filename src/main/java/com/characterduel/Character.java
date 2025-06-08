@@ -81,21 +81,21 @@ public class Character {
 
         // Passar isso para Board seria bom provavelmente
         String strDirection = switch (direction) {
+            case 0 -> {
+                this.position[0]--;
+                yield "cima";
+            }
             case 1 -> {
                 this.position[1]++;
-                yield "norte";
+                yield "direita";
             }
             case 2 -> {
                 this.position[0]++;
-                yield "leste";
+                yield "baixo";
             }
             case 3 -> {
                 this.position[1]--;
-                yield "sul";
-            }
-            case 4 -> {
-                this.position[0]--;
-                yield "oeste";
+                yield "esquerda";
             }
             default -> "placeholder";
         };
