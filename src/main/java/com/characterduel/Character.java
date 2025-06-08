@@ -45,7 +45,7 @@ public class Character {
             JOptionPane.showMessageDialog(null, "Movimento inválido!");
     }
 
-    private void defendLog(int defensePoints) {
+    private void defendLog() {
         if(defensePoints == standardDefensePoints)
             JOptionPane.showMessageDialog(null, "A armadura de " + this.name + " já estava em perfeito estado...");
         else
@@ -83,8 +83,8 @@ public class Character {
     }
 
     protected void defend() {
+        defendLog();
         this.defensePoints = this.standardDefensePoints;
-        defendLog(this.standardDefensePoints);
     }
 
     protected boolean isAlive() {

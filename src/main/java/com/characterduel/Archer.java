@@ -10,8 +10,8 @@ public class Archer extends Character {
 
     @Override
     protected void ultimate(Character enemy) {
-        ultimateLog(enemy);
         this.attackRange += standardAttackRange / 5;
+        ultimateLog(enemy);
     }
 
     @Override

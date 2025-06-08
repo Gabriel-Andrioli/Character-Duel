@@ -10,8 +10,8 @@ public class Warrior extends Character {
 
     @Override
     protected void ultimate(Character enemy) {
-        ultimateLog(enemy);
         this.attackPoints = this.standardAttackPoints*2;
+        ultimateLog(enemy);
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Warrior extends Character {
             JOptionPane.showMessageDialog(null, this.name + " está enfurecido e duplicou sua força!\n");
             JOptionPane.showMessageDialog(null,
                     this.name + "\n"
-                            + "Força: " + this.standardAttackPoints*2 + "\n");
+                            + "Força: " + this.attackPoints + "\n");
         }
     }
 }
