@@ -6,31 +6,52 @@ public class Game {
     
     public static void play() {
         Menu.showInitialMessage();
-        
-        String mode = Menu.chooseMode();
-        if (mode.equals("Sair do jogo"))
-            endGame();
-        else if ("Player x Player".equals(mode)){
-            Character PlayerOne = createCharacter(Menu.chooseCharacter(1));
-            PlayerOne.giveName(Menu.nameCharacter(1));
-            Character PlayerTwo = createCharacter(Menu.chooseCharacter(2));
-            PlayerTwo.giveName(Menu.nameCharacter(2));
-            
-            
-            myBoard.createBoard(PlayerOne, PlayerTwo);
-            myBoard.show(PlayerOne, PlayerTwo);
-            
-            while (PlayerOne.isAlive() && PlayerTwo.isAlive()){
-                String action = Menu.chooseAction(PlayerOne.name,1);
-                executeAction(action, PlayerOne, PlayerTwo, 1);
+        do{
+            String mode = Menu.chooseMode();
+            if (mode.equals("Sair do jogo"))
+                endGame();
+            else if ("Player x Player".equals(mode)){
+                Character PlayerOne = createCharacter(Menu.chooseCharacter(1));
+                PlayerOne.giveName(Menu.nameCharacter(1));
+                Character PlayerTwo = createCharacter(Menu.chooseCharacter(2));
+                PlayerTwo.giveName(Menu.nameCharacter(2));
+
+
+                myBoard.createBoard(PlayerOne, PlayerTwo);
                 myBoard.show(PlayerOne, PlayerTwo);
-                if(!PlayerTwo.isAlive())
-                    break;
-                action = Menu.chooseAction(PlayerTwo.name,2);
-                executeAction(action, PlayerTwo, PlayerOne, 2);
-                myBoard.show(PlayerOne, PlayerTwo);
+
+                while (PlayerOne.isAlive() && PlayerTwo.isAlive()){
+                    String action = Menu.chooseAction(PlayerOne.name,1);
+                    executeAction(action, PlayerOne, PlayerTwo, 1);
+                    myBoard.show(PlayerOne, PlayerTwo);
+                    if(!PlayerTwo.isAlive())
+                        break;
+                    action = Menu.chooseAction(PlayerTwo.name,2);
+                    executeAction(action, PlayerTwo, PlayerOne, 2);
+                    myBoard.show(PlayerOne, PlayerTwo);
+                }
             }
-        }
+            /*else{
+                Character PlayerOne = createCharacter(Menu.chooseCharacter(1));
+                PlayerOne.giveName(Menu.nameCharacter(1));
+                Character Bot = createBot();
+                PlayerTwo.giveName(Menu.nameCharacter(2));
+
+                myBoard.createBoard(PlayerOne, Bot);
+                myBoard.show(PlayerOne, Bot);
+
+                while (PlayerOne.isAlive() && Bot.isAlive()){
+                    String action = Menu.chooseAction(PlayerOne.name,1);
+                    executeAction(action, PlayerOne, Bot, 1);
+                    myBoard.show(PlayerOne, Bot);
+                    if(!Bot.isAlive())
+                        break;
+                    action = Bot.action();
+                    botExecuteAction();
+                    myBoard.show(PlayerOne, Bot);
+                }
+            }*/
+        }while ("Continuar jogando".equals(Menu.continuePlaying()));
     }
     
     private static Character createCharacter (String type){

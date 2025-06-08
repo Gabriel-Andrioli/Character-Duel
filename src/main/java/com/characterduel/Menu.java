@@ -8,6 +8,7 @@ public class Menu {
     private static final String[] characters = {"Arqueiro", "Mago", "Guerreiro", "Sair do jogo"};
     private static final String[] actions = {"Mover", "Atacar", "Defender", "Poder Especial", "Sair do jogo"};
     private static final String[] directions = {"Cima", "Direita", "Baixo", "Esquerda", "Sair do jogo"};
+    private static final String[] playAgain = {"Continuar jogando", "Encerrar"};
     
     public static void showInitialMessage(){
         JOptionPane.showMessageDialog(null, "Bem-vindo ao Duelo de Personagens!\n\nDescrição:\n - O jogo consiste em um "
@@ -41,5 +42,10 @@ public class Menu {
     public static int whereToMove (String name, int n){
         return JOptionPane.showOptionDialog(null, name + "\nEscolha para onde irá se mover:",
                 "Character Duel", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, directions, "Direita");
+    }
+    
+    public static String continuePlaying(){
+        return playAgain[JOptionPane.showOptionDialog(null, "Deseja continuar jogando?", "Character Duel", 
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, playAgain, "Continuar jogando")];
     }
 }
