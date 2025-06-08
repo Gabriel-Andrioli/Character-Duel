@@ -29,9 +29,9 @@ public class Character {
         else
             JOptionPane.showMessageDialog(null, "O inimigo estava muito longe e não foi atingido...");
         JOptionPane.showMessageDialog(null, this.name + "'s HP: " + this.healthPoints
-                + "\t" + this.name + "'s DP: " + this.defensePoints);
+                + "    " + this.name + "'s DP: " + this.defensePoints);
         JOptionPane.showMessageDialog(null, enemy.name + "'s HP: " + enemy.healthPoints
-                + "\t" + enemy.name + "'s DP: " + enemy.defensePoints);
+                + "    " + enemy.name + "'s DP: " + enemy.defensePoints);
     }
 
     protected void attack(Character enemy) {
