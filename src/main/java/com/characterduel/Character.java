@@ -46,7 +46,10 @@ public class Character {
     }
 
     private void defendLog(int defensePoints) {
-        JOptionPane.showMessageDialog(null, this.name + " se defendeu e recuperou " + defensePoints + " pontos de escudo!");
+        if(defensePoints == standardDefensePoints)
+            JOptionPane.showMessageDialog(null, "A armadura de " + this.name + " já estava em perfeito estado...");
+        else
+            JOptionPane.showMessageDialog(null, this.name + " se defendeu e recuperou " + defensePoints + " pontos de escudo!");
     }
 
      protected void ultimateLog(Character enemy) {

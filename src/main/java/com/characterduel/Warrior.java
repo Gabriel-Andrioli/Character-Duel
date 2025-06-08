@@ -17,12 +17,12 @@ public class Warrior extends Character {
     @Override
     protected void ultimateLog(Character enemy) {
         if(this.attackPoints > this.standardAttackPoints)
-            JOptionPane.showMessageDialog(null, this.name + " já está enfurecido!");
+            JOptionPane.showMessageDialog(null, this.name + " já está enfurecido...");
         else {
             JOptionPane.showMessageDialog(null, this.name + " está enfurecido e duplicou sua força!\n");
             JOptionPane.showMessageDialog(null,
                     this.name + "\n"
-                            + "Força: " + this.attackPoints + "\n");
+                            + "Força: " + this.standardAttackPoints*2 + "\n");
         }
     }
 }
