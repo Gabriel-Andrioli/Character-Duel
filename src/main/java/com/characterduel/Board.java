@@ -12,7 +12,7 @@ public class Board {
         playerOne.position[0] = rand.nextInt(10);
         playerOne.position[1] = rand.nextInt(4);
         playerTwo.position[0] = rand.nextInt(10);
-        playerTwo.position[1] = 10 - rand.nextInt(4);
+        playerTwo.position[1] = 9 - rand.nextInt(4);
 
         board[playerOne.position[0]][playerOne.position[1]] = 1;
         board[playerTwo.position[0]][playerTwo.position[1]] = 2;
