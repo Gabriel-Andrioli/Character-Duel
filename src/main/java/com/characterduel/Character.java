@@ -34,12 +34,20 @@ public class Character {
                 + "    " + enemy.name + "'s DP: " + enemy.defensePoints);
     }
 
-    protected void movementLog(Character player, boolean success, String stringDirection) {
+    private void movementLog(Character player, boolean success, String stringDirection) {
         if(success)
             JOptionPane.showMessageDialog(null, player.name + " moveu " + stringDirection + "!");
         else
             JOptionPane.showMessageDialog(null, "Movimento inválido!");
     }
+
+    private void defendLog(int defensePoints) {
+        JOptionPane.showMessageDialog(null, this.name + " se defendeu e recuperou " + defensePoints + " pontos de escudo!");
+    }
+
+     protected void ultimateLog(Character enemy) {
+
+     }
 
     protected void attack(Character enemy) {
 
@@ -73,6 +81,7 @@ public class Character {
 
     protected void defend() {
         this.defensePoints = this.standardDefensePoints;
+        defendLog(this.standardDefensePoints);
     }
 
     protected boolean isAlive() {
