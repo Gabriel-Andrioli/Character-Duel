@@ -10,13 +10,13 @@ public class Character {
     protected int attackRange;
 
     protected int standardDefensePoints;
-    protected int standardHealthPoints = 100;
+    protected int standardHealthPoints;
     protected int standardAttackPoints;
     protected int standardAttackRange;
 
     protected int [] position = new int [2];
 
-    public Character(int standardAttackPoints, int standardDefensePoints, int standardAttackRange) {
+    public Character(int standardAttackPoints, int standardDefensePoints, int standardAttackRange, int standardHealthPoints) {
         this.standardHealthPoints = healthPoints = standardHealthPoints;
         this.standardAttackPoints = attackPoints = standardAttackPoints;
         this.standardDefensePoints = defensePoints = standardDefensePoints;

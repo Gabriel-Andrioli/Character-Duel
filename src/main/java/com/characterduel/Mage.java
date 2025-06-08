@@ -3,7 +3,7 @@ package com.characterduel;
 public class Mage extends Character {
 
     public Mage() {
-        super(10,7,3);
+        super(10,7,3,100);
     }
 
     @Override

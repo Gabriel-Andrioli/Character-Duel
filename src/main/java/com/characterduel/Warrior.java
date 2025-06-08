@@ -3,7 +3,7 @@ package com.characterduel;
 public class Warrior extends Character {
 
     public Warrior() {
-        super(15,10,1);
+        super(15,10,1,100);
     }
 
     @Override
