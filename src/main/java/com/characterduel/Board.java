@@ -51,13 +51,6 @@ public class Board {
         return true;
     }
 
-    protected void movementLog(Character player, boolean success, String stringDirection) {
-        if(success) 
-            JOptionPane.showMessageDialog(null, player.name + " moveu " + stringDirection + "!");
-        else
-            JOptionPane.showMessageDialog(null, "Movimento inválido!");
-    }
-
     private boolean hasAPlayer(Character player, int x, int y) {
         return player.position[0] == x && player.position[1] == y;
     }

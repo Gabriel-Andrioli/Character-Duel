@@ -23,7 +23,7 @@ public class Character {
         this.standardAttackRange = attackRange = standardAttackRange;
     }
 
-    private void attackBattleLog(Character enemy, int argDamageDealt) {
+    private void attackLog(Character enemy, int argDamageDealt) {
         if(argDamageDealt > 0)
             JOptionPane.showMessageDialog(null, this.name + " atingiu seu inimigo e causou " + argDamageDealt + " pontos de dano!");
         else
@@ -34,18 +34,25 @@ public class Character {
                 + "    " + enemy.name + "'s DP: " + enemy.defensePoints);
     }
 
+    protected void movementLog(Character player, boolean success, String stringDirection) {
+        if(success)
+            JOptionPane.showMessageDialog(null, player.name + " moveu " + stringDirection + "!");
+        else
+            JOptionPane.showMessageDialog(null, "Movimento inválido!");
+    }
+
     protected void attack(Character enemy) {
 
         int damageDealt = this.attackPoints;
 
         if(!Game.myBoard.isInRange(this,enemy)) {
-            attackBattleLog(enemy, 0);
+            attackLog(enemy, 0);
             //Game.skipTurn();
             }
 
         else if(enemy.defensePoints >= damageDealt) {
             enemy.defensePoints -= damageDealt;
-            attackBattleLog(enemy, damageDealt);
+            attackLog(enemy, damageDealt);
             //Game.skipTurn();
         }
 
@@ -53,13 +60,13 @@ public class Character {
             damageDealt -= enemy.defensePoints;
             enemy.defensePoints = 0;
             enemy.healthPoints -= damageDealt;
-            attackBattleLog(enemy, damageDealt);
+            attackLog(enemy, damageDealt);
             //Game.skipTurn();
         }
 
         else {
             enemy.healthPoints -= damageDealt;
-            attackBattleLog(enemy, damageDealt);
+            attackLog(enemy, damageDealt);
             //Game.skipTurn();
         }
     }
@@ -75,7 +82,7 @@ public class Character {
     protected void move(Character enemy, int direction) {
         // N -> 0, E-> 1, S-> 2, W-> 3
         if(!Game.myBoard.moveIsValid(this, enemy, direction)) {
-            Game.myBoard.movementLog(this,false, "placeholder");
+            movementLog(this,false, "placeholder");
             return;
         }
         
@@ -99,7 +106,7 @@ public class Character {
             default -> "placeholder";
         };
 
-        Game.myBoard.movementLog(this,true,strDirection);
+        movementLog(this,true,strDirection);
     }
 
     protected void giveName(String name) {
