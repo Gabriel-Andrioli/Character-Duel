@@ -76,31 +76,30 @@ public class Character {
         // N -> 0, E-> 1, S-> 2, W-> 3
         if(!Game.myBoard.moveIsValid(this, enemy, direction)) {
             Game.myBoard.movementLog(this,false, "placeholder");
+            return;
         }
-        else{
-            String strDirection = switch (direction) {
-                case 0 -> {
-                    this.position[0]--;
-                    yield "cima";
-                }
-                case 1 -> {
-                    this.position[1]++;
-                    yield "direita";
-                }
-                case 2 -> {
-                    this.position[0]++;
-                    yield "baixo";
-                }
-                case 3 -> {
-                    this.position[1]--;
-                    yield "esquerda";
-                }
-                default -> "placeholder";
-            };
+        
+        String strDirection = switch (direction) {
+            case 0 -> {
+                this.position[0]--;
+                yield "cima";
+            }
+            case 1 -> {
+                this.position[1]++;
+                yield "direita";
+            }
+            case 2 -> {
+                this.position[0]++;
+                yield "baixo";
+            }
+            case 3 -> {
+                this.position[1]--;
+                yield "esquerda";
+            }
+            default -> "placeholder";
+        };
 
-            Game.myBoard.movementLog(this,true,strDirection);
-        }
-
+        Game.myBoard.movementLog(this,true,strDirection);
     }
 
     protected void giveName(String name) {
