@@ -128,4 +128,8 @@ public class Character {
     protected void ultimate(Character enemy) {
         
     }
+    
+    protected Character createBot(){
+        return null;
+    }
 }

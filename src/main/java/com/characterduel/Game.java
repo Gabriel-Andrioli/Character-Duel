@@ -1,5 +1,7 @@
 package com.characterduel;
 
+import java.util.Random;
+
 public class Game {
     
     public static Board myBoard = new Board();
@@ -39,13 +41,12 @@ public class Game {
             /*else{
                 Character PlayerOne = createCharacter(Menu.chooseCharacter(1));
                 PlayerOne.giveName(Menu.nameCharacter(1));
-                Character Bot = createBot();
-                PlayerTwo.giveName(Menu.nameCharacter(2));
+                Character botChar = Bot.createBot();
 
-                myBoard.createBoard(PlayerOne, Bot);
-                myBoard.show(PlayerOne, Bot);
+                myBoard.createBoard(PlayerOne, botChar);
+                myBoard.show(PlayerOne, botChar);
 
-                while (PlayerOne.isAlive() && Bot.isAlive()){
+                while (PlayerOne.isAlive() && botChar.isAlive()){
                     String action = Menu.chooseAction(PlayerOne.name,1);
                     executeAction(action, PlayerOne, Bot, 1);
                     myBoard.show(PlayerOne, Bot);
