@@ -24,9 +24,9 @@ public class Menu {
     
     public static String chooseCharacter(int n){
         return characters[JOptionPane.showOptionDialog(null, "(Jogador "+n+")\nSelecione um personagem:\n1. Arqueiro:\nForça: "
-                + "+\nDefesa: +\nAlcance de Ataque: +++\nPoder Especial: Aumenta seu alcance\n\n2. Mago:\nForça: ++\nDefesa: "
-                + "++\nAlcance de Ataque: ++\nPoder Especial: Troca de vida com o oponente\n\n3. Guerreiro:\nForça: +++"
-                + "\nDefesa: +++\nAlcance de Ataque: +\nPoder Especial: Dobra sua força", "Character Duel", 
+                + "8\nDefesa: 5\nAlcance de Ataque: 5\nPoder Especial: Aumenta seu alcance\n\n2. Mago:\nForça: 10\nDefesa: "
+                + "7\nAlcance de Ataque: 3\nPoder Especial: Troca de vida com o oponente\n\n3. Guerreiro:\nForça: 15"
+                + "\nDefesa: 10\nAlcance de Ataque: 1\nPoder Especial: Dobra sua força", "Character Duel",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, characters, "Guerreiro")];
     }
     
