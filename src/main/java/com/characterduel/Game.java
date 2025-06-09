@@ -24,13 +24,13 @@ public class Game {
 
                 while (PlayerOne.isAlive() && PlayerTwo.isAlive()){
                     String action = Menu.chooseAction(PlayerOne.name);
-                    executeAction(action, PlayerOne, PlayerTwo);
+                    executeAction(action, PlayerOne, PlayerTwo, Menu.whereToMove(PlayerOne.name));
                     myBoard.show(PlayerOne, PlayerTwo);
                     PlayerOne.statusLog(PlayerTwo);
                     if(!PlayerTwo.isAlive())
                         break;
                     action = Menu.chooseAction(PlayerTwo.name);
-                    executeAction(action, PlayerTwo, PlayerOne);
+                    executeAction(action, PlayerTwo, PlayerOne, Menu.whereToMove(PlayerTwo.name));
                     myBoard.show(PlayerOne, PlayerTwo);
                     PlayerTwo.statusLog(PlayerOne);
                 }
@@ -40,7 +40,7 @@ public class Game {
                 else
                     Menu.winner(PlayerTwo.name);
             }
-            /*else{
+            else{
                 Character PlayerOne = createCharacter(Menu.chooseCharacter(1));
                 PlayerOne.giveName(Menu.nameCharacter(1));
                 Character botChar = createBot();
@@ -50,17 +50,17 @@ public class Game {
 
                 while (PlayerOne.isAlive() && botChar.isAlive()){
                     String action = Menu.chooseAction(PlayerOne.name);
-                    executeAction(action, PlayerOne, botChar);
+                    executeAction(action, PlayerOne, botChar, Menu.whereToMove(PlayerOne.name));
                     myBoard.show(PlayerOne, botChar);
                     PlayerOne.statusLog(botChar);
                     if(!botChar.isAlive())
                         break;
                     action = botChar.selectAction(PlayerOne);
-                    executeAction(action, botChar, PlayerOne);
+                    executeAction(action, botChar, PlayerOne, botChar.chooseDirection());
                     myBoard.show(PlayerOne, botChar);
                     botChar.statusLog(PlayerOne);
                 }
-            }*/
+            }
         }while ("Continuar jogando".equals(Menu.continuePlaying()));
     }
     
@@ -75,11 +75,10 @@ public class Game {
         return aux;
     }
     
-    private static void executeAction (String action, Character player, Character enemy){
+    private static void executeAction (String action, Character player, Character enemy, int direction){
         switch (action) {
             case "Mover" -> {
-                int direction = Menu.whereToMove(player.name);
-                if (direction==5)
+                if (direction==4)
                     endGame();
                 player.move(enemy, direction);
             }
@@ -90,7 +89,7 @@ public class Game {
         }
     }
     
-    protected Character createBot (){
+    protected static Character createBot (){
         Random rand = new Random();
         int verify = rand.nextInt(3);
         Bot botChar = null;

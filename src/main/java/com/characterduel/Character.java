@@ -138,4 +138,12 @@ public class Character {
     protected Character createBot(){
         return null;
     }
+    
+    protected String selectAction(Character enemy){
+        return null;
+    }
+    
+    protected int chooseDirection(){
+        return 0;
+    }
 }
