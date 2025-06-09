@@ -60,6 +60,11 @@ public class Game {
                     executeAction(action, botChar, PlayerOne, botChar.chooseDirection(PlayerOne));
                     myBoard.show(PlayerOne, botChar);
                 }
+                
+                if (!botChar.isAlive())
+                    Menu.winner(PlayerOne.name);
+                else
+                    Menu.winner(botChar.name);
             }
         }while ("Continuar jogando".equals(Menu.continuePlaying()));
     }
