@@ -50,15 +50,15 @@ public class Game {
 
                 while (PlayerOne.isAlive() && botChar.isAlive()){
                     String action = Menu.chooseAction(PlayerOne.name);
+                    PlayerOne.statusLog(botChar);
                     executeAction(action, PlayerOne, botChar, 10);  //10=flag
                     myBoard.show(PlayerOne, botChar);
-                    PlayerOne.statusLog(botChar);
                     if(!botChar.isAlive())
                         break;
+                    botChar.statusLog(PlayerOne);
                     action = botChar.selectAction(PlayerOne);
                     executeAction(action, botChar, PlayerOne, botChar.chooseDirection(PlayerOne));
                     myBoard.show(PlayerOne, botChar);
-                    botChar.statusLog(PlayerOne);
                 }
             }
         }while ("Continuar jogando".equals(Menu.continuePlaying()));
