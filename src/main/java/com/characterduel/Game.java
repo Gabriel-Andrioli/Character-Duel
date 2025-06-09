@@ -63,6 +63,11 @@ public class Game {
                     if(PlayerOne.isAlive())
                         PlayerOne.statusLog(botChar);
                 }
+                
+                if (!botChar.isAlive())
+                    Menu.winner(PlayerOne.name);
+                else
+                    Menu.winner(botChar.name);
             }
         }while ("Continuar jogando".equals(Menu.continuePlaying()));
     }
