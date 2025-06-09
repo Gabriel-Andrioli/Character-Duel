@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Mage extends Bot {
 
     public Mage() {
-        super(10, 7, 3, 100,"Mage");
+        super(10, 7, 3, 100,"mago");
     }
 
     @Override
