@@ -12,7 +12,7 @@ public class Bot extends Character {
     @Override
     protected String selectAction (Character enemy){
         switch (type) {
-            case "Archer" -> {
+            case "arqueiro" -> {
                 if (Game.myBoard.isInRange(this, enemy) && attackPoints>(enemy.defensePoints+enemy.healthPoints)){
                     return "Atacar";
                 }
@@ -27,7 +27,7 @@ public class Bot extends Character {
                     return "Poder Especial";
                 }
             }
-            case "Mage" -> {
+            case "mago" -> {
                 if (Game.myBoard.isInRange(this, enemy) && attackPoints>(enemy.defensePoints+enemy.healthPoints)){
                     return "Atacar";
                 }
@@ -44,7 +44,7 @@ public class Bot extends Character {
                     return "Mover";
                 }
             }
-            case "Warrior" -> {
+            case "guerreiro" -> {
                 if (Game.myBoard.isInRange(this, enemy) && attackPoints>(enemy.defensePoints+enemy.healthPoints)){
                     return "Atacar";
                 }
