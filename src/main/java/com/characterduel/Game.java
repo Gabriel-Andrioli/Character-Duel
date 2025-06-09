@@ -40,6 +40,7 @@ public class Game {
                 else
                     Menu.winner(PlayerTwo.name);
             }
+
             else{
                 Character PlayerOne = createCharacter(Menu.chooseCharacter(1));
                 PlayerOne.giveName(Menu.nameCharacter(1));
@@ -50,15 +51,17 @@ public class Game {
 
                 while (PlayerOne.isAlive() && botChar.isAlive()){
                     String action = Menu.chooseAction(PlayerOne.name);
-                    PlayerOne.statusLog(botChar);
                     executeAction(action, PlayerOne, botChar, 10);  //10=flag
                     myBoard.show(PlayerOne, botChar);
                     if(!botChar.isAlive())
                         break;
-                    botChar.statusLog(PlayerOne);
+                    else
+                        botChar.statusLog(PlayerOne);
                     action = botChar.selectAction(PlayerOne);
                     executeAction(action, botChar, PlayerOne, botChar.chooseDirection(PlayerOne));
                     myBoard.show(PlayerOne, botChar);
+                    if(PlayerOne.isAlive())
+                        PlayerOne.statusLog(botChar);
                 }
                 
                 if (!botChar.isAlive())
