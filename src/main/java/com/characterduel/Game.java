@@ -98,15 +98,18 @@ public class Game {
         switch (verify) {
             case 0 -> {botChar = new Archer();
                 botChar.giveName("Oliver Queen");
-                botChar.type="Archer";
+                botChar.type="arqueiro";
+                botChar.showTypeBot();
             }
             case 1 -> {botChar = new Mage();
                 botChar.giveName("Trismegisto");
-                botChar.type="Mage";
+                botChar.type="mago";
+                botChar.showTypeBot();
             }
             case 2 -> {botChar = new Warrior();
                 botChar.giveName("Lancelot");
-                botChar.type="Warrior";
+                botChar.type="guerreiro";
+                botChar.showTypeBot();
             }
         }
         return botChar;

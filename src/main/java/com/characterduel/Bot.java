@@ -1,5 +1,7 @@
 package com.characterduel;
 
+import javax.swing.JOptionPane;
+
 public class Bot extends Character {
     
     Bot(int standardAttackPoints, int standardDefensePoints, int standardAttackRange, int standardHealthPoints, 
@@ -77,5 +79,9 @@ public class Bot extends Character {
         else{
             return 3;  //esquerda
         }
+    }
+    
+    protected void showTypeBot(){
+        JOptionPane.showMessageDialog(null, "Você batalhará contra " + name + ", o " + type + ".");
     }
 }
