@@ -15,12 +15,15 @@ public class Character {
     protected int standardAttackRange;
 
     protected int [] position = new int [2];
+    protected String type;
 
-    public Character(int standardAttackPoints, int standardDefensePoints, int standardAttackRange, int standardHealthPoints) {
+    public Character(int standardAttackPoints, int standardDefensePoints, int standardAttackRange, int standardHealthPoints, 
+            String characterType) {
         this.standardHealthPoints = healthPoints = standardHealthPoints;
         this.standardAttackPoints = attackPoints = standardAttackPoints;
         this.standardDefensePoints = defensePoints = standardDefensePoints;
         this.standardAttackRange = attackRange = standardAttackRange;
+        this.type=characterType;
     }
 
     private void attackLog(Character enemy, int argDamageDealt) {
@@ -28,14 +31,6 @@ public class Character {
             JOptionPane.showMessageDialog(null, this.name + " atingiu seu inimigo e causou " + argDamageDealt + " pontos de dano!");
         else
             JOptionPane.showMessageDialog(null, "O inimigo estava muito longe e não foi atingido...");
-        JOptionPane.showMessageDialog(null,
-                this.name + "\n"
-                        + "PV: " + this.healthPoints + "\n"
-                        + "PE: " + this.defensePoints + "\n");
-        JOptionPane.showMessageDialog(null,
-                enemy.name + "\n"
-                        + "PV: " + enemy.healthPoints + "\n"
-                        + "PE: " + enemy.defensePoints + "\n");
     }
 
     private void movementLog(Character player, boolean success, String stringDirection) {
@@ -49,7 +44,8 @@ public class Character {
         if(defensePoints == standardDefensePoints)
             JOptionPane.showMessageDialog(null, "A armadura de " + this.name + " já estava em perfeito estado...");
         else
-            JOptionPane.showMessageDialog(null, this.name + " se defendeu e recuperou " + defensePoints + " pontos de escudo!");
+            JOptionPane.showMessageDialog(null, this.name + " se defendeu e recuperou " + 
+                    (standardDefensePoints - defensePoints) + " pontos de escudo!");
     }
 
      protected void ultimateLog(Character enemy) {
@@ -82,7 +78,7 @@ public class Character {
         }
     }
 
-    protected void defend() {
+    protected void defend(Character enemy) {
         defendLog();
         this.defensePoints = this.standardDefensePoints;
     }
@@ -119,6 +115,16 @@ public class Character {
         };
 
         movementLog(this,true,strDirection);
+    }
+    
+    protected void statusLog(Character enemy){
+        JOptionPane.showMessageDialog(null,
+                this.name + "\n"
+                        + "PV: " + this.healthPoints + "\n"
+                        + "PE: " + this.defensePoints + "\n\n"
+                        + enemy.name + "\n"
+                        + "PV: " + enemy.healthPoints + "\n"
+                        + "PE: " + enemy.defensePoints + "\n");
     }
 
     protected void giveName(String name) {

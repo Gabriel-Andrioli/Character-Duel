@@ -1,30 +1,37 @@
 package com.characterduel;
 
-import java.util.Random;
-
 public class Bot extends Character {
     
-    Bot(int standardAttackPoints, int standardDefensePoints, int standardAttackRange, int standardHealthPoints){
-        super(standardAttackPoints, standardDefensePoints, standardAttackRange, standardHealthPoints);
+    Bot(int standardAttackPoints, int standardDefensePoints, int standardAttackRange, int standardHealthPoints, 
+            String characterType){
+        super(standardAttackPoints, standardDefensePoints, standardAttackRange, standardHealthPoints, characterType);
     }
-        
-    @Override
-    protected Character createBot (){
-        Random rand = new Random();
-        int verify = rand.nextInt(3);
-        Character botChar = null;
-        switch (verify) {
-            case 0 -> {botChar = new Archer();
-                botChar.giveName("Flechas");
+    
+    protected String selectAction (Character enemy){
+        switch (type) {
+            case "Archer" -> {
+                if (Game.myBoard.isInRange(this, enemy) && attackPoints>(enemy.defensePoints+enemy.healthPoints)){
+                    return "Atacar";
+                }
+                else if (healthPoints<20 && defensePoints<standardDefensePoints){
+                    return "Defender";
+                }
+                
+                else if (Game.myBoard.isInRange(this, enemy)){
+                    return "Atacar";
+                }
+                else{
+                    return "Poder Especial";
+                }
             }
-            case 1 -> {botChar = new Mage();
-                botChar.giveName("El Mago");
+            case "Mage" -> {
+                
             }
-            case 2 -> {botChar = new Warrior();
-                botChar.giveName("Cavaleiro");
+            case "Warrior" -> {
+                
             }
         }
-        return botChar;
     }
+    
     
 }

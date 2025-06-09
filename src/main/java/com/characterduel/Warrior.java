@@ -5,13 +5,13 @@ import javax.swing.*;
 public class Warrior extends Bot {
 
     public Warrior() {
-        super(15,10,1,100);
+        super(15,10,1,100,"Warrior");
     }
 
     @Override
     protected void ultimate(Character enemy) {
-        this.attackPoints = this.standardAttackPoints*2;
         ultimateLog(enemy);
+        this.attackPoints = this.standardAttackPoints*2;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Warrior extends Bot {
             JOptionPane.showMessageDialog(null, this.name + " está enfurecido e duplicou sua força!\n");
             JOptionPane.showMessageDialog(null,
                     this.name + "\n"
-                            + "Força: " + this.attackPoints + "\n");
+                            + "Força: " + this.standardAttackPoints*2 + "\n");
         }
     }
 }

@@ -23,14 +23,16 @@ public class Game {
                 myBoard.show(PlayerOne, PlayerTwo);
 
                 while (PlayerOne.isAlive() && PlayerTwo.isAlive()){
-                    String action = Menu.chooseAction(PlayerOne.name,1);
-                    executeAction(action, PlayerOne, PlayerTwo, 1);
+                    String action = Menu.chooseAction(PlayerOne.name);
+                    executeAction(action, PlayerOne, PlayerTwo);
                     myBoard.show(PlayerOne, PlayerTwo);
+                    PlayerOne.statusLog(PlayerTwo);
                     if(!PlayerTwo.isAlive())
                         break;
-                    action = Menu.chooseAction(PlayerTwo.name,2);
-                    executeAction(action, PlayerTwo, PlayerOne, 2);
+                    action = Menu.chooseAction(PlayerTwo.name);
+                    executeAction(action, PlayerTwo, PlayerOne);
                     myBoard.show(PlayerOne, PlayerTwo);
+                    PlayerTwo.statusLog(PlayerOne);
                 }
                 
                 if (!PlayerTwo.isAlive())
@@ -41,20 +43,22 @@ public class Game {
             /*else{
                 Character PlayerOne = createCharacter(Menu.chooseCharacter(1));
                 PlayerOne.giveName(Menu.nameCharacter(1));
-                Character botChar = Bot.createBot();
+                Character botChar = createBot();
 
                 myBoard.createBoard(PlayerOne, botChar);
                 myBoard.show(PlayerOne, botChar);
 
                 while (PlayerOne.isAlive() && botChar.isAlive()){
-                    String action = Menu.chooseAction(PlayerOne.name,1);
-                    executeAction(action, PlayerOne, Bot, 1);
-                    myBoard.show(PlayerOne, Bot);
-                    if(!Bot.isAlive())
+                    String action = Menu.chooseAction(PlayerOne.name);
+                    executeAction(action, PlayerOne, botChar);
+                    myBoard.show(PlayerOne, botChar);
+                    PlayerOne.statusLog(botChar);
+                    if(!botChar.isAlive())
                         break;
-                    action = Bot.action();
-                    botExecuteAction();
-                    myBoard.show(PlayerOne, Bot);
+                    action = botChar.selectAction(PlayerOne);
+                    executeAction(action, botChar, PlayerOne);
+                    myBoard.show(PlayerOne, botChar);
+                    botChar.statusLog(PlayerOne);
                 }
             }*/
         }while ("Continuar jogando".equals(Menu.continuePlaying()));
@@ -71,19 +75,40 @@ public class Game {
         return aux;
     }
     
-    private static void executeAction (String action, Character player, Character enemy, int n){
+    private static void executeAction (String action, Character player, Character enemy){
         switch (action) {
             case "Mover" -> {
-                int direction = Menu.whereToMove(player.name,n);
+                int direction = Menu.whereToMove(player.name);
                 if (direction==5)
                     endGame();
                 player.move(enemy, direction);
             }
             case "Atacar" -> player.attack(enemy);
-            case "Defender" -> player.defend();
+            case "Defender" -> player.defend(enemy);
             case "Poder Especial" -> player.ultimate(enemy);
             case "Sair do jogo" -> endGame();
         }
+    }
+    
+    protected Character createBot (){
+        Random rand = new Random();
+        int verify = rand.nextInt(3);
+        Bot botChar = null;
+        switch (verify) {
+            case 0 -> {botChar = new Archer();
+                botChar.giveName("Oliver Queen");
+                botChar.type="Archer";
+            }
+            case 1 -> {botChar = new Mage();
+                botChar.giveName("Trismegisto");
+                botChar.type="Mage";
+            }
+            case 2 -> {botChar = new Warrior();
+                botChar.giveName("Lancelot");
+                botChar.type="Warrior";
+            }
+        }
+        return botChar;
     }
     
     private static void endGame (){

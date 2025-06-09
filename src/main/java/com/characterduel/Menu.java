@@ -34,12 +34,12 @@ public class Menu {
         return JOptionPane.showInputDialog("(Jogador "+n+")\nDigite o nome do seu personagem:");
     }
     
-    public static String chooseAction(String name, int n){
+    public static String chooseAction(String name){
         return actions[JOptionPane.showOptionDialog(null, name + "\nEscolha sua próxima ação:", "Character Duel",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, actions, "Mover")];
     }
     
-    public static int whereToMove (String name, int n){
+    public static int whereToMove (String name){
         return JOptionPane.showOptionDialog(null, name + "\nEscolha para onde irá se mover:",
                 "Character Duel", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, directions, "Direita");
     }
@@ -50,6 +50,6 @@ public class Menu {
     }
     
     public static void winner(String name){
-        JOptionPane.showMessageDialog(null, "Após um forte embate, " + name + " saiu vencedor!");
+        JOptionPane.showMessageDialog(null, "Após um forte embate, " + name + " saiu vitorioso!");
     }
 }

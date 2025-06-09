@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Archer extends Bot {
 
     public Archer() {
-        super(8,5,5,100);
+        super(8,5,5,100,"Archer");
     }
 
     @Override
