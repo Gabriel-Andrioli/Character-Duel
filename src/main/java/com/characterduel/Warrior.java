@@ -2,7 +2,7 @@ package com.characterduel;
 
 import javax.swing.*;
 
-public class Warrior extends Character {
+public class Warrior extends Bot {
 
     public Warrior() {
         super(15,10,1,100);

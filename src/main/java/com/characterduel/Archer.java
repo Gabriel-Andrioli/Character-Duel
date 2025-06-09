@@ -2,7 +2,7 @@ package com.characterduel;
 
 import javax.swing.*;
 
-public class Archer extends Character {
+public class Archer extends Bot {
 
     public Archer() {
         super(8,5,5,100);
