@@ -50,7 +50,7 @@ public class Game {
 
                 while (PlayerOne.isAlive() && botChar.isAlive()){
                     String action = Menu.chooseAction(PlayerOne.name);
-                    executeAction(action, PlayerOne, botChar, Menu.whereToMove(PlayerOne.name));
+                    executeAction(action, PlayerOne, botChar, 10);  //10=flag
                     myBoard.show(PlayerOne, botChar);
                     PlayerOne.statusLog(botChar);
                     if(!botChar.isAlive())
@@ -80,6 +80,8 @@ public class Game {
             case "Mover" -> {
                 if (direction==4)
                     endGame();
+                if (direction==10)
+                    direction=Menu.whereToMove(player.name);
                 player.move(enemy, direction);
             }
             case "Atacar" -> player.attack(enemy);
