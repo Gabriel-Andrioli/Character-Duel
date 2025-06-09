@@ -24,13 +24,13 @@ public class Game {
 
                 while (PlayerOne.isAlive() && PlayerTwo.isAlive()){
                     String action = Menu.chooseAction(PlayerOne.name);
-                    executeAction(action, PlayerOne, PlayerTwo, Menu.whereToMove(PlayerOne.name));
+                    executeAction(action, PlayerOne, PlayerTwo, 10);
                     myBoard.show(PlayerOne, PlayerTwo);
                     PlayerOne.statusLog(PlayerTwo);
                     if(!PlayerTwo.isAlive())
                         break;
                     action = Menu.chooseAction(PlayerTwo.name);
-                    executeAction(action, PlayerTwo, PlayerOne, Menu.whereToMove(PlayerTwo.name));
+                    executeAction(action, PlayerTwo, PlayerOne, 10);
                     myBoard.show(PlayerOne, PlayerTwo);
                     PlayerTwo.statusLog(PlayerOne);
                 }
