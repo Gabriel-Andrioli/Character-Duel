@@ -56,7 +56,7 @@ public class Game {
                     if(!botChar.isAlive())
                         break;
                     action = botChar.selectAction(PlayerOne);
-                    executeAction(action, botChar, PlayerOne, botChar.chooseDirection());
+                    executeAction(action, botChar, PlayerOne, botChar.chooseDirection(PlayerOne));
                     myBoard.show(PlayerOne, botChar);
                     botChar.statusLog(PlayerOne);
                 }

@@ -1,7 +1,5 @@
 package com.characterduel;
 
-import java.util.Random;
-
 public class Bot extends Character {
     
     Bot(int standardAttackPoints, int standardDefensePoints, int standardAttackRange, int standardHealthPoints, 
@@ -66,8 +64,18 @@ public class Bot extends Character {
     }
     
     @Override
-    protected int chooseDirection(){
-        Random rand = new Random();
-        return rand.nextInt(4);
+    protected int chooseDirection(Character enemy){
+        if (this.position[0] > enemy.position[0]){
+            return 0;  //cima
+        }
+        else if (this.position[0] < enemy.position[0]){
+            return 2;  //baixo
+        }
+        else if (this.position[1] < enemy.position[1]){
+            return 1;  //direita
+        }
+        else{
+            return 3;  //esquerda
+        }
     }
 }

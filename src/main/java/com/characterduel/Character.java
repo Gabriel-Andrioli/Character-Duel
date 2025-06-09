@@ -143,7 +143,7 @@ public class Character {
         return null;
     }
     
-    protected int chooseDirection(){
+    protected int chooseDirection(Character enemy){
         return 0;
     }
 }
