@@ -23,7 +23,7 @@ public class Character {
         this.standardAttackPoints = attackPoints = standardAttackPoints;
         this.standardDefensePoints = defensePoints = standardDefensePoints;
         this.standardAttackRange = attackRange = standardAttackRange;
-        this.type=characterType;
+        this.type = characterType;
     }
 
     private void attackLog(Character enemy, int argDamageDealt, boolean shieldIsBroken) {
