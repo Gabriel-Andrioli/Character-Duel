@@ -26,8 +26,13 @@ public class Character {
         this.type=characterType;
     }
 
-    private void attackLog(Character enemy, int argDamageDealt) {
-        if(argDamageDealt > 0)
+    private void attackLog(Character enemy, int argDamageDealt, boolean shieldIsBroken) {
+        if(argDamageDealt > 0 && shieldIsBroken)
+            JOptionPane.showMessageDialog(null, this.name + " quebrou a armadura de " + enemy.name + ", além de lhe causar " + argDamageDealt +
+                    " pontos de dano!");
+        else if(shieldIsBroken)
+            JOptionPane.showMessageDialog(null, this.name + " quebrou a armadura de " + enemy.name + "!");
+        else if(argDamageDealt > 0)
             JOptionPane.showMessageDialog(null, this.name + " atingiu seu inimigo e causou " + argDamageDealt + " pontos de dano!");
         else
             JOptionPane.showMessageDialog(null, "O inimigo estava muito longe e não foi atingido...");
@@ -57,24 +62,24 @@ public class Character {
         int damageDealt = this.attackPoints;
 
         if(!Game.myBoard.isInRange(this,enemy)) {
-            attackLog(enemy, 0);
+            attackLog(enemy, 0,false);
             }
 
-        else if(enemy.defensePoints >= damageDealt) {
+        else if(enemy.defensePoints > damageDealt) {
             enemy.defensePoints -= damageDealt;
-            attackLog(enemy, damageDealt);
+            attackLog(enemy, damageDealt,false);
         }
 
         else if (enemy.defensePoints > 0) {
             damageDealt -= enemy.defensePoints;
             enemy.defensePoints = 0;
             enemy.healthPoints -= damageDealt;
-            attackLog(enemy, damageDealt);
+            attackLog(enemy,damageDealt,true);
         }
 
         else {
             enemy.healthPoints -= damageDealt;
-            attackLog(enemy, damageDealt);
+            attackLog(enemy,damageDealt,false);
         }
     }
 

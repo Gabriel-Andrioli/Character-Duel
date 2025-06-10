@@ -24,13 +24,13 @@ public class Game {
 
                 while (PlayerOne.isAlive() && PlayerTwo.isAlive()){
                     String action = Menu.chooseAction(PlayerOne.name);
-                    executeAction(action, PlayerOne, PlayerTwo, 10);
+                    executeAction(action, PlayerOne, PlayerTwo, false);
                     myBoard.show(PlayerOne, PlayerTwo);
                     PlayerOne.statusLog(PlayerTwo);
                     if(!PlayerTwo.isAlive())
                         break;
                     action = Menu.chooseAction(PlayerTwo.name);
-                    executeAction(action, PlayerTwo, PlayerOne, 10);
+                    executeAction(action, PlayerTwo, PlayerOne, false);
                     myBoard.show(PlayerOne, PlayerTwo);
                     PlayerTwo.statusLog(PlayerOne);
                 }
@@ -51,14 +51,14 @@ public class Game {
 
                 while (PlayerOne.isAlive() && botChar.isAlive()){
                     String action = Menu.chooseAction(PlayerOne.name);
-                    executeAction(action, PlayerOne, botChar, 10);  //10=flag
+                    executeAction(action, PlayerOne, botChar, false);
                     myBoard.show(PlayerOne, botChar);
                     if(!botChar.isAlive())
                         break;
                     else
                         botChar.statusLog(PlayerOne);
                     action = botChar.selectAction(PlayerOne);
-                    executeAction(action, botChar, PlayerOne, botChar.chooseDirection(PlayerOne));
+                    executeAction(action, botChar, PlayerOne, true);
                     myBoard.show(PlayerOne, botChar);
                     if(PlayerOne.isAlive())
                         PlayerOne.statusLog(botChar);
@@ -83,13 +83,19 @@ public class Game {
         return aux;
     }
     
-    private static void executeAction (String action, Character player, Character enemy, int direction){
+    private static void executeAction (String action, Character player, Character enemy, boolean botAction){
         switch (action) {
             case "Mover" -> {
-                if (direction==4)
-                    endGame();
-                if (direction==10)
-                    direction=Menu.whereToMove(player.name);
+                int direction;
+
+                if(botAction)
+                    direction = player.chooseDirection(enemy);
+                else {
+                    direction = Menu.whereToMove(player.name);
+                    if (direction == 4)
+                        endGame();
+                }
+
                 player.move(enemy, direction);
             }
             case "Atacar" -> player.attack(enemy);
