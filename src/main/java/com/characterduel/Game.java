@@ -13,59 +13,59 @@ public class Game {
             if (mode.equals("Sair do jogo"))
                 endGame();
             else if ("Player x Player".equals(mode)){
-                Character PlayerOne = createCharacter(Menu.chooseCharacter(1));
-                PlayerOne.giveName(Menu.nameCharacter(1));
-                Character PlayerTwo = createCharacter(Menu.chooseCharacter(2));
-                PlayerTwo.giveName(Menu.nameCharacter(2));
+                Character playerOne = createCharacter(Menu.chooseCharacter(1));
+                playerOne.giveName(Menu.nameCharacter(1));
+                Character playerTwo = createCharacter(Menu.chooseCharacter(2));
+                playerTwo.giveName(Menu.nameCharacter(2));
 
 
-                myBoard.createBoard(PlayerOne, PlayerTwo);
-                myBoard.show(PlayerOne, PlayerTwo);
+                myBoard.createBoard(playerOne, playerTwo);
+                myBoard.show(playerOne, playerTwo);
 
-                while (PlayerOne.isAlive() && PlayerTwo.isAlive()){
-                    String action = Menu.chooseAction(PlayerOne.name);
-                    executeAction(action, PlayerOne, PlayerTwo, false);
-                    myBoard.show(PlayerOne, PlayerTwo);
-                    PlayerOne.statusLog(PlayerTwo);
-                    if(!PlayerTwo.isAlive())
+                while (playerOne.isAlive() && playerTwo.isAlive()){
+                    String action = Menu.chooseAction(playerOne.name);
+                    executeAction(action, playerOne, playerTwo, false);
+                    myBoard.show(playerOne, playerTwo);
+                    playerOne.statusLog(playerTwo);
+                    if(!playerTwo.isAlive())
                         break;
-                    action = Menu.chooseAction(PlayerTwo.name);
-                    executeAction(action, PlayerTwo, PlayerOne, false);
-                    myBoard.show(PlayerOne, PlayerTwo);
-                    PlayerTwo.statusLog(PlayerOne);
+                    action = Menu.chooseAction(playerTwo.name);
+                    executeAction(action, playerTwo, playerOne, false);
+                    myBoard.show(playerOne, playerTwo);
+                    playerTwo.statusLog(playerOne);
                 }
                 
-                if (!PlayerTwo.isAlive())
-                    Menu.winner(PlayerOne.name);
+                if (!playerTwo.isAlive())
+                    Menu.winner(playerOne.name);
                 else
-                    Menu.winner(PlayerTwo.name);
+                    Menu.winner(playerTwo.name);
             }
 
             else{
-                Character PlayerOne = createCharacter(Menu.chooseCharacter(1));
-                PlayerOne.giveName(Menu.nameCharacter(1));
+                Character playerOne = createCharacter(Menu.chooseCharacter(1));
+                playerOne.giveName(Menu.nameCharacter(1));
                 Character botChar = createBot();
 
-                myBoard.createBoard(PlayerOne, botChar);
-                myBoard.show(PlayerOne, botChar);
+                myBoard.createBoard(playerOne, botChar);
+                myBoard.show(playerOne, botChar);
 
-                while (PlayerOne.isAlive() && botChar.isAlive()){
-                    String action = Menu.chooseAction(PlayerOne.name);
-                    executeAction(action, PlayerOne, botChar, false);
-                    myBoard.show(PlayerOne, botChar);
+                while (playerOne.isAlive() && botChar.isAlive()){
+                    String action = Menu.chooseAction(playerOne.name);
+                    executeAction(action, playerOne, botChar, false);
+                    myBoard.show(playerOne, botChar);
                     if(!botChar.isAlive())
                         break;
                     else
-                        botChar.statusLog(PlayerOne);
-                    action = botChar.selectAction(PlayerOne);
-                    executeAction(action, botChar, PlayerOne, true);
-                    myBoard.show(PlayerOne, botChar);
-                    if(PlayerOne.isAlive())
-                        PlayerOne.statusLog(botChar);
+                        botChar.statusLog(playerOne);
+                    action = botChar.selectAction(playerOne);
+                    executeAction(action, botChar, playerOne, true);
+                    myBoard.show(playerOne, botChar);
+                    if(playerOne.isAlive())
+                        playerOne.statusLog(botChar);
                 }
                 
                 if (!botChar.isAlive())
-                    Menu.winner(PlayerOne.name);
+                    Menu.winner(playerOne.name);
                 else
                     Menu.winner(botChar.name);
             }
