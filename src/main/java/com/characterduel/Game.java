@@ -105,7 +105,7 @@ public class Game {
         }
     }
     
-    protected static Character createBot (){
+    private static Character createBot (){
         Random rand = new Random();
         int verify = rand.nextInt(3);
         Bot botChar = null;

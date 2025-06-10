@@ -31,9 +31,12 @@ public class Menu {
     }
     
     public static String nameCharacter(int n){
-        return JOptionPane.showInputDialog("(Jogador "+n+")\nDigite o nome do seu personagem:");
+        String placeholder = JOptionPane.showInputDialog("(Jogador "+n+")\nDigite o nome do seu personagem:");
+        if(placeholder == null)
+            return "Jogador "+n;
+        return placeholder;
     }
-    
+
     public static String chooseAction(String name){
         return actions[JOptionPane.showOptionDialog(null, name + "\nEscolha sua próxima ação:", "Character Duel",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, actions, "Mover")];
