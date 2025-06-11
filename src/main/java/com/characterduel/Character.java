@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 public class Character {
     protected String name;
+
     protected int healthPoints;
     protected int attackPoints;
     protected int defensePoints;
@@ -121,7 +122,11 @@ public class Character {
 
         movementLog(this,true,strDirection);
     }
-    
+
+    protected void ultimate(Character enemy) {
+
+    }
+
     protected void statusLog(Character enemy){
         JOptionPane.showMessageDialog(null,
                 this.name + "\n"
@@ -135,11 +140,7 @@ public class Character {
     protected void giveName(String name) {
         this.name = name;
     }
-    
-    protected void ultimate(Character enemy) {
-        
-    }
-    
+
     protected Character createBot(){
         return null;
     }
