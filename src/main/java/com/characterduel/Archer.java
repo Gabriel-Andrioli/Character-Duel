@@ -10,7 +10,7 @@ public class Archer extends Bot {
 
     @Override
     protected void ultimate(Character enemy) {
-        this.setAttackRange(getStandardAttackRange());
+        this.setAttackRange(getAttackRange() + 1);
         ultimateLog(enemy);
     }
 
