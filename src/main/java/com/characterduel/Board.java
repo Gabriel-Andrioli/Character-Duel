@@ -9,13 +9,13 @@ public class Board {
     private void setInitialPositions(Character playerOne, Character playerTwo) {
         Random rand = new Random();
 
-        playerOne.position[0] = rand.nextInt(10);
-        playerOne.position[1] = rand.nextInt(4);
-        playerTwo.position[0] = rand.nextInt(10);
-        playerTwo.position[1] = 9 - rand.nextInt(4);
+        playerOne.getPosition()[0] = rand.nextInt(10);
+        playerOne.getPosition()[1] = rand.nextInt(4);
+        playerTwo.getPosition()[0] = rand.nextInt(10);
+        playerTwo.getPosition()[1] = 9 - rand.nextInt(4);
 
-        board[playerOne.position[0]][playerOne.position[1]] = 1;
-        board[playerTwo.position[0]][playerTwo.position[1]] = 2;
+        board[playerOne.getPosition()[0]][playerOne.getPosition()[1]] = 1;
+        board[playerTwo.getPosition()[0]][playerTwo.getPosition()[1]] = 2;
     } 
     
     public void createBoard(Character playerOne, Character playerTwo) {
@@ -24,35 +24,35 @@ public class Board {
     }
 
     protected boolean isInRange(Character playerOne, Character playerTwo) {
-        int distance = Math.max(Math.abs(playerTwo.position[0] - playerOne.position[0]),
-                Math.abs(playerTwo.position[1] - playerOne.position[1]));
-        return distance <= playerOne.attackRange;
+        int distance = Math.max(Math.abs(playerTwo.getPosition()[0] - playerOne.getPosition()[0]),
+                Math.abs(playerTwo.getPosition()[1] - playerOne.getPosition()[1]));
+        return distance <= playerOne.getAttackRange();
     }
 
     protected boolean moveIsValid(Character playerOne, Character playerTwo, int direction) {
         // N -> 0, E-> 1, S-> 2, W-> 3
-        if(direction == 0 && playerOne.position[0] == 0)
+        if(direction == 0 && playerOne.getPosition()[0] == 0)
             return false;
-        if(direction == 1 && playerOne.position[1] == 9)
+        if(direction == 1 && playerOne.getPosition()[1] == 9)
             return false;
-        if(direction == 2 && playerOne.position[0] == 9)
+        if(direction == 2 && playerOne.getPosition()[0] == 9)
             return false;
-        if(direction == 3 && playerOne.position[1] == 0)
+        if(direction == 3 && playerOne.getPosition()[1] == 0)
             return false;
 
-        if(direction == 0 && playerTwo.position[1] == playerOne.position[1] && playerTwo.position[0] == playerOne.position[0] - 1)
+        if(direction == 0 && playerTwo.getPosition()[1] == playerOne.getPosition()[1] && playerTwo.getPosition()[0] == playerOne.getPosition()[0] - 1)
             return false;
-        if(direction == 1 && playerTwo.position[0] == playerOne.position[0] && playerTwo.position[1] == playerOne.position[1] + 1)
+        if(direction == 1 && playerTwo.getPosition()[0] == playerOne.getPosition()[0] && playerTwo.getPosition()[1] == playerOne.getPosition()[1] + 1)
             return false;
-        if(direction == 2 && playerTwo.position[1] == playerOne.position[1] && playerTwo.position[0] == playerOne.position[0] + 1)
+        if(direction == 2 && playerTwo.getPosition()[1] == playerOne.getPosition()[1] && playerTwo.getPosition()[0] == playerOne.getPosition()[0] + 1)
             return false;
-        if(direction == 3 && playerTwo.position[0] == playerOne.position[0] && playerTwo.position[1] == playerOne.position[1] - 1)
+        if(direction == 3 && playerTwo.getPosition()[0] == playerOne.getPosition()[0] && playerTwo.getPosition()[1] == playerOne.getPosition()[1] - 1)
             return false;
         return true;
     }
 
     private boolean hasAPlayer(Character player, int x, int y) {
-        return player.position[0] == x && player.position[1] == y;
+        return player.getPosition()[0] == x && player.getPosition()[1] == y;
     }
 
     protected void show(Character playerOne, Character playerTwo) {

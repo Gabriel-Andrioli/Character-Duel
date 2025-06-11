@@ -11,18 +11,18 @@ public class Warrior extends Bot {
     @Override
     protected void ultimate(Character enemy) {
         ultimateLog(enemy);
-        this.attackPoints = this.standardAttackPoints*2;
+        this.setAttackPoints(this.getStandardAttackPoints()*2);
     }
 
     @Override
     protected void ultimateLog(Character enemy) {
-        if(this.attackPoints > this.standardAttackPoints)
-            JOptionPane.showMessageDialog(null, this.name + " já está enfurecido...");
+        if(this.getAttackPoints() > this.getStandardAttackPoints())
+            JOptionPane.showMessageDialog(null, this.getName() + " já está enfurecido...");
         else {
-            JOptionPane.showMessageDialog(null, this.name + " está enfurecido e duplicou sua força!\n");
+            JOptionPane.showMessageDialog(null, this.getName() + " está enfurecido e duplicou sua força!\n");
             JOptionPane.showMessageDialog(null,
-                    this.name + "\n"
-                            + "Força: " + this.standardAttackPoints*2 + "\n");
+                    this.getName() + "\n"
+                            + "Força: " + this.getStandardAttackPoints()*2 + "\n");
         }
     }
 }

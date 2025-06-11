@@ -11,12 +11,12 @@ public class Bot extends Character {
     
     @Override
     protected String selectAction (Character enemy){
-        switch (type) {
+        switch (this.getType()) {
             case "arqueiro" -> {
-                if (Game.myBoard.isInRange(this, enemy) && attackPoints>(enemy.defensePoints+enemy.healthPoints)){
+                if (Game.myBoard.isInRange(this, enemy) && getAttackPoints() > (enemy.getDefensePoints()+enemy.getHealthPoints())){
                     return "Atacar";
                 }
-                else if (healthPoints<20 && defensePoints<standardDefensePoints){
+                else if (this.getHealthPoints()<20 && this.getDefensePoints()<this.getStandardDefensePoints()){
                     return "Defender";
                 }
                 
@@ -28,13 +28,13 @@ public class Bot extends Character {
                 }
             }
             case "mago" -> {
-                if (Game.myBoard.isInRange(this, enemy) && attackPoints>(enemy.defensePoints+enemy.healthPoints)){
+                if (Game.myBoard.isInRange(this, enemy) && getAttackPoints() > (enemy.getDefensePoints()+enemy.getHealthPoints())){
                     return "Atacar";
                 }
-                else if((healthPoints+defensePoints)<=enemy.attackPoints){
+                else if((this.getHealthPoints()+this.getDefensePoints())<=enemy.getAttackPoints()){
                     return "Poder Especial";
                 }
-                else if (healthPoints<20 && defensePoints<standardDefensePoints){
+                else if (this.getHealthPoints()<20 && this.getDefensePoints()<getStandardDefensePoints()){
                     return "Defender";
                 }
                 else if (Game.myBoard.isInRange(this, enemy)){
@@ -45,13 +45,13 @@ public class Bot extends Character {
                 }
             }
             case "guerreiro" -> {
-                if (Game.myBoard.isInRange(this, enemy) && attackPoints>(enemy.defensePoints+enemy.healthPoints)){
+                if (Game.myBoard.isInRange(this, enemy) && getAttackPoints() > (enemy.getDefensePoints()+enemy.getHealthPoints())){
                     return "Atacar";
                 }
-                else if (attackPoints<standardAttackPoints*2){
+                else if (getAttackPoints()<getStandardAttackPoints()*2){
                     return "Poder Especial";
                 }
-                else if (healthPoints<20 && defensePoints<standardDefensePoints){
+                else if (this.getHealthPoints()<20 && this.getDefensePoints()<getStandardDefensePoints()){
                     return "Defender";
                 }
                 else if (Game.myBoard.isInRange(this, enemy)){
@@ -67,13 +67,13 @@ public class Bot extends Character {
     
     @Override
     protected int chooseDirection(Character enemy){
-        if (this.position[0] > enemy.position[0]){
+        if (this.getPosition()[0] > enemy.getPosition()[0]){
             return 0;  //cima
         }
-        else if (this.position[0] < enemy.position[0]){
+        else if (this.getPosition()[0] < enemy.getPosition()[0]){
             return 2;  //baixo
         }
-        else if (this.position[1] < enemy.position[1]){
+        else if (this.getPosition()[1] < enemy.getPosition()[1]){
             return 1;  //direita
         }
         else{
@@ -82,6 +82,6 @@ public class Bot extends Character {
     }
     
     protected void showTypeBot(){
-        JOptionPane.showMessageDialog(null, "Você batalhará contra " + name + ", o " + type + ".");
+        JOptionPane.showMessageDialog(null, "Você batalhará contra " + getName() + ", o " + getType() + ".");
     }
 }

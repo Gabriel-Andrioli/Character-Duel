@@ -23,22 +23,22 @@ public class Game {
                 myBoard.show(playerOne, playerTwo);
 
                 while (playerOne.isAlive() && playerTwo.isAlive()){
-                    String action = Menu.chooseAction(playerOne.name);
+                    String action = Menu.chooseAction(playerOne.getName());
                     executeAction(action, playerOne, playerTwo, false);
                     myBoard.show(playerOne, playerTwo);
                     playerOne.statusLog(playerTwo);
                     if(!playerTwo.isAlive())
                         break;
-                    action = Menu.chooseAction(playerTwo.name);
+                    action = Menu.chooseAction(playerTwo.getName());
                     executeAction(action, playerTwo, playerOne, false);
                     myBoard.show(playerOne, playerTwo);
                     playerTwo.statusLog(playerOne);
                 }
                 
                 if (!playerTwo.isAlive())
-                    Menu.winner(playerOne.name);
+                    Menu.winner(playerOne.getName());
                 else
-                    Menu.winner(playerTwo.name);
+                    Menu.winner(playerTwo.getName());
             }
 
             else{
@@ -50,7 +50,7 @@ public class Game {
                 myBoard.show(playerOne, botChar);
 
                 while (playerOne.isAlive() && botChar.isAlive()){
-                    String action = Menu.chooseAction(playerOne.name);
+                    String action = Menu.chooseAction(playerOne.getName());
                     executeAction(action, playerOne, botChar, false);
                     myBoard.show(playerOne, botChar);
                     if(!botChar.isAlive())
@@ -65,9 +65,9 @@ public class Game {
                 }
                 
                 if (!botChar.isAlive())
-                    Menu.winner(playerOne.name);
+                    Menu.winner(playerOne.getName());
                 else
-                    Menu.winner(botChar.name);
+                    Menu.winner(botChar.getName());
             }
         }while ("Continuar jogando".equals(Menu.continuePlaying()));
     }
@@ -91,7 +91,7 @@ public class Game {
                 if(botAction)
                     direction = player.chooseDirection(enemy);
                 else {
-                    direction = Menu.whereToMove(player.name);
+                    direction = Menu.whereToMove(player.getName());
                     if (direction == 4)
                         endGame();
                 }
@@ -112,17 +112,17 @@ public class Game {
         switch (verify) {
             case 0 -> {botChar = new Archer();
                 botChar.giveName("Oliver Queen");
-                botChar.type="arqueiro";
+                botChar.setType("arqueiro");
                 botChar.showTypeBot();
             }
             case 1 -> {botChar = new Mage();
                 botChar.giveName("Trismegisto");
-                botChar.type="mago";
+                botChar.setType("mago");
                 botChar.showTypeBot();
             }
             case 2 -> {botChar = new Warrior();
                 botChar.giveName("Lancelot");
-                botChar.type="guerreiro";
+                botChar.setType("guerreiro");
                 botChar.showTypeBot();
             }
         }

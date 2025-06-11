@@ -3,20 +3,20 @@ package com.characterduel;
 import javax.swing.JOptionPane;
 
 public class Character {
-    protected String name;
+    private String name;
 
-    protected int healthPoints;
-    protected int attackPoints;
-    protected int defensePoints;
-    protected int attackRange;
+    private int healthPoints;
+    private int attackPoints;
+    private int defensePoints;
+    private int attackRange;
 
-    protected int standardDefensePoints;
-    protected int standardHealthPoints;
-    protected int standardAttackPoints;
-    protected int standardAttackRange;
+    private final int standardDefensePoints;
+    private final int standardHealthPoints;
+    private final int standardAttackPoints;
+    private final int standardAttackRange;
 
-    protected int [] position = new int [2];
-    protected String type;
+    private int [] position = new int [2];
+    private String type;
 
     public Character(int standardAttackPoints, int standardDefensePoints, int standardAttackRange, int standardHealthPoints, 
             String characterType) {
@@ -25,6 +25,78 @@ public class Character {
         this.standardDefensePoints = defensePoints = standardDefensePoints;
         this.standardAttackRange = attackRange = standardAttackRange;
         this.type = characterType;
+    }
+
+    protected int getHealthPoints() {
+        return healthPoints;
+    }
+
+    protected int getStandardHealthPoints() {
+        return standardHealthPoints;
+    }
+
+    protected int getStandardDefensePoints() {
+        return standardDefensePoints;
+    }
+
+    protected int getStandardAttackPoints() {
+        return standardAttackPoints;
+    }
+
+    protected int getStandardAttackRange() {
+        return standardAttackRange;
+    }
+
+    protected void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
+    }
+
+    protected int getDefensePoints() {
+        return defensePoints;
+    }
+
+    protected void setDefensePoints(int defensePoints) {
+        this.defensePoints = defensePoints;
+    }
+
+    protected String getType() {
+        return type;
+    }
+
+    protected void setType(String characterType) {
+        this.type = characterType;
+    }
+
+    protected String getName() {
+        return name;
+    }
+
+    protected void setName(String name) {
+        this.name = name;
+    }
+
+    protected int getAttackPoints() {
+        return this.attackPoints;
+    }
+
+    protected void setAttackPoints(int attackPoints) {
+        this.attackPoints = attackPoints;
+    }
+
+    protected int [] getPosition() {
+        return position;
+    }
+
+    protected void setPosition(int [] position) {
+        this.position = position;
+    }
+
+    protected int getAttackRange() {
+        return this.attackRange;
+    }
+
+    protected void setAttackRange(int attackRange) {
+        this.attackRange = attackRange;
     }
 
     private void attackLog(Character enemy, int argDamageDealt, boolean shieldIsBroken) {

@@ -10,14 +10,14 @@ public class Mage extends Bot {
 
     @Override
     protected void ultimate(Character enemy) {
-        int aux = this.healthPoints;
-        this.healthPoints = enemy.healthPoints;
-        enemy.healthPoints = aux;
+        int aux = this.getHealthPoints();
+        this.setHealthPoints(enemy.getHealthPoints());
+        enemy.setHealthPoints(aux);
         ultimateLog(enemy);
     }
 
     @Override
     protected void ultimateLog(Character enemy) {
-        JOptionPane.showMessageDialog(null, this.name + " trocou de vida com seu oponente!\n");
+        JOptionPane.showMessageDialog(null, this.getName() + " trocou de vida com seu oponente!\n");
     }
 }
