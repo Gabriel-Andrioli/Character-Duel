@@ -31,10 +31,6 @@ public class Character {
         return healthPoints;
     }
 
-    protected int getStandardHealthPoints() {
-        return standardHealthPoints;
-    }
-
     protected int getStandardDefensePoints() {
         return standardDefensePoints;
     }
@@ -55,10 +51,6 @@ public class Character {
         return defensePoints;
     }
 
-    protected void setDefensePoints(int defensePoints) {
-        this.defensePoints = defensePoints;
-    }
-
     protected String getType() {
         return type;
     }
@@ -71,10 +63,6 @@ public class Character {
         return name;
     }
 
-    protected void setName(String name) {
-        this.name = name;
-    }
-
     protected int getAttackPoints() {
         return this.attackPoints;
     }
@@ -85,10 +73,6 @@ public class Character {
 
     protected int [] getPosition() {
         return position;
-    }
-
-    protected void setPosition(int [] position) {
-        this.position = position;
     }
 
     protected int getAttackRange() {
