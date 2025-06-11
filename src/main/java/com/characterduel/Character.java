@@ -98,7 +98,7 @@ public class Character {
         if(success)
             JOptionPane.showMessageDialog(null, player.name + " moveu para " + stringDirection + "!");
         else
-            JOptionPane.showMessageDialog(null, "Movimento inválido!");
+            JOptionPane.showMessageDialog(null, "Movimento inválido!\nSelecione uma direção válida.");
     }
 
     private void defendLog() {
@@ -150,9 +150,9 @@ public class Character {
 
     protected void move(Character enemy, int direction) {
         // N -> 0, E-> 1, S-> 2, W-> 3
-        if(!Game.myBoard.moveIsValid(this, enemy, direction)) {
+        while(!Game.myBoard.moveIsValid(this, enemy, direction)) {
             movementLog(this,false, "placeholder");
-            return;
+            direction=Menu.whereToMove(this.name);
         }
         
         String strDirection = switch (direction) {
