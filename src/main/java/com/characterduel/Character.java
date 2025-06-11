@@ -11,7 +11,6 @@ public class Character {
     private int attackRange;
 
     private final int standardDefensePoints;
-    private final int standardHealthPoints;
     private final int standardAttackPoints;
     private final int standardAttackRange;
 
@@ -20,7 +19,7 @@ public class Character {
 
     public Character(int standardAttackPoints, int standardDefensePoints, int standardAttackRange, int standardHealthPoints, 
             String characterType) {
-        this.standardHealthPoints = healthPoints = standardHealthPoints;
+        healthPoints = standardHealthPoints;
         this.standardAttackPoints = attackPoints = standardAttackPoints;
         this.standardDefensePoints = defensePoints = standardDefensePoints;
         this.standardAttackRange = attackRange = standardAttackRange;
